@@ -1,3 +1,5 @@
 django
 qrcode
 mysqlclient
+Pillow
+requests

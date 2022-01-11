@@ -13,6 +13,6 @@ class User(AbstractUser):
         FEMALE  = "F", "Female"
 
     first_name = models.CharField("이름", max_length=30, blank=True, default="")
-    avatar = models.ImageField(blank=True, upload_to="accounts/avatar/%Y/%m/%d")
+    avatar = models.ImageField(blank=True, upload_to="users/avatar/%Y/%m/%d")
     objects = base_managers.CustomUserManager()
 
