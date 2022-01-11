@@ -1,0 +1,8 @@
+<div class="t-flex t-items-center">
+    <div class="t-border-[0.126rem] t-p-[0.5rem] t-rounded-[2rem] md:t-flex t-border-gray-800 t-items-center t-shadow-md hover:t-shadow-lg">
+        <form class="t-flex t-items-center" method="GET" action="{% url "products:search" %}">
+            <input value="{{ keyword }}" class="t-w-[18rem]  t-outline-none t-text-[1rem] t-ml-[1rem] focus:t-outline-none"name="keyword" placeholder="찾고 싶은 상품을 검색해주세요!" />
+            <button><img src="/media/nav/search.svg"/></button>
+        </form>   
+    </div>
+</div>

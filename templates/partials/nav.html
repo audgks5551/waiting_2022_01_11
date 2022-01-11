@@ -1,0 +1,32 @@
+<ul class="lg:t-flex t-h-full t-items-center t-mt-[0.5rem] lg:t-mt-0 t-hidden">
+    <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap" >
+        <a class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" href="{% url "products:list" %}">
+            <span>베스트</span>
+        </a>
+    </li>
+    {% if user.is_authenticated %}
+        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
+            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "cart:list" %}">
+                <span>장바구니</span>
+            </a>
+        </li>
+        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
+            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "accounts:logout" %}">
+                <span>로그아웃</span>
+            </a>
+        </li>
+    {% else %}
+        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
+            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "accounts:signup" %}">
+                <span>회원가입</span>
+            </a>
+        </li>
+        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
+            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "accounts:login" %}">
+                <span>로그인</span>
+            </a>
+        </li>
+    {% endif %}
+</ul>
+
+    

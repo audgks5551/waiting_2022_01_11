@@ -12,3 +12,57 @@ html > body {
     font-family: "GmarketSansMedium";
     text-underline-position: under;
 }
+
+@keyframes messageFadeInMedium {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    5% {
+      opacity: 1;
+      transform: translateY(60px);
+    }
+    95% {
+      opacity: 1;
+      transform: translateY(60px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  }
+
+@keyframes messageFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+}
+    5% {
+        opacity: 1;
+        transform: translateY(60px);
+}
+    95% {
+        opacity: 1;
+        transform: translateY(60px);
+}
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+  
+.t-message {
+    animation: messageFadeIn 5s ease-in-out forwards;
+  }
+
+
+
+@media (min-width: 1280px) {
+    .t-message-lg {
+        animation: messageFadeInMedium 5s ease-in-out forwards;
+    }
+}
+
+.text-underline-position-under {
+    text-underline-position: under;
+}

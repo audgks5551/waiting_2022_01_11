@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="t-text-[15px]">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -14,15 +14,24 @@
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'common.css' %}">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
         <title>기달 | {% block page_title %}{% endblock page_title %}</title>
     </head>
     <body>
+        {% include "partials/messages.html" %}
+        {% include "partials/nav-bt.html" %}
 
-        {% block content %}
-        {% endblock content %}
+        <div class="t-mt-[5rem]">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        
+            {% include "partials/footer.html" %}
+
+        {% block nav-b %}
+        {% endblock nav-b%}
 
     </body>
 </html>

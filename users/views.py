@@ -10,14 +10,14 @@ from django.contrib import messages
 
 #
 from . import forms
-from accounts import models
+from users import models
 import requests
 
 class LoginView(FormView):
 
     """ Login View"""
 
-    template_name = "accounts/login.html"
+    template_name = "users/login.html"
     form_class = forms.LoginForm
     success_url = reverse_lazy("home")
 
@@ -36,16 +36,16 @@ def log_out(request: HttpRequest):
 
     logout(request)
     messages.info(request, "다음에 또 만나요")
-    return redirect(reverse("home"))
+    return redirect(reverse("core:home"))
 
 
 class SignUpView(FormView):
 
     """ SignUp View """
 
-    template_name = "accounts/signup.html"
+    template_name = "users/signup.html"
     form_class = forms.SignUpForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
         form.save()
@@ -67,7 +67,7 @@ def complete_verification(request, key):
     except models.User.DoesNotExist:
         # to do: add error message
         pass
-    return redirect(reverse("home"))
+    return redirect(reverse("core:home"))
 
 # 깃허브
 def github_login(request: HttpRequest):
@@ -127,7 +127,7 @@ def github_collback(request: HttpRequest):
                         user.save()
                     login(request, user)
                     messages.success(request, f"{name}님 환영합니다")
-                    return redirect(reverse("home"))
+                    return redirect(reverse("core:home"))
 
                 else:
                     raise GithubException("로그인정보를 받아오지 못했습니다")
@@ -135,13 +135,13 @@ def github_collback(request: HttpRequest):
             raise GithubException("인가코드를 받아올 수 없습니다")
     except GithubException as e:
         messages.error(request, e)
-        return redirect(reverse("accounts:login"))
+        return redirect(reverse("users:login"))
 
 
 # 카카오톡
 def kakao_login(request: HttpRequest):
     client_id = os.environ.get("KAKAO_ID")
-    redirect_uri = "http://localhost:8000/accounts/login/kakao/callback/"
+    redirect_uri = "http://localhost:8000/users/login/kakao/callback/"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
     )
@@ -153,7 +153,7 @@ def kakao_collback(request: HttpRequest):
     try:
         code = request.GET.get("code")
         client_id = os.environ.get("KAKAO_ID")
-        redirect_uri = "http://localhost:8000/accounts/login/kakao/callback/"
+        redirect_uri = "http://localhost:8000/users/login/kakao/callback/"
         token_request = requests.post(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
         )
@@ -196,7 +196,7 @@ def kakao_collback(request: HttpRequest):
                 )
         login(request, user)
         messages.success(request, f"{nickname}님 환영합니다")
-        return redirect(reverse("home"))
+        return redirect(reverse("core:home"))
     except KakaoException as e:
         messages.error(request, e)
-        return redirect(reverse("accounts:login"))
+        return redirect(reverse("users:login"))

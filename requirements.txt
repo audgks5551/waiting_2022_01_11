@@ -3,3 +3,5 @@ qrcode
 mysqlclient
 Pillow
 requests
+django_bootstrap5
+django-dotenv

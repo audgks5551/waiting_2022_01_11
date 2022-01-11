@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+signup
+{% endblock page_title %}
+
+{% block search-bar %}   
+{% endblock search-bar %}
+
+{% block content %}
+    <div class="t-container t-mx-auto t-flex t-flex-col t-justify-center t-items-center t-border t-w-[95%] lg:t-w-[50%] xl:t-w-[35%] t-p-[2rem] t-flex-1">
+        
+        <div class="t-mb-[1.5rem] t-text-[1.5rem]">
+            <span>회원가입</span>
+        </div>
+        
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <span class="text-red-500 font-medium text-sm">{{error}}</span> 
+            {% endfor %}
+        {% endif %}
+        
+        <div class="t-w-full">  
+            <form method="POST" action="{% url "users:signup" %}">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% include "partials/form.html" with field=field %}
+                {% endfor %}
+                <button class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-300 hover:t-bg-gray-400 t-text-white">회원가입</button>
+            </form>
+        
+        </div>
+        
+        {% include "partials/social_login.html" with name="회원가입" %}
+
+    </div>
+{% endblock %}

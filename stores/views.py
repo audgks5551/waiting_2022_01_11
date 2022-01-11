@@ -2,10 +2,13 @@ from django.shortcuts import redirect, render, reverse
 
 #
 import qrcode
+from . import models
 
 def storeList(request):
 
-    context = {}
+    store_list = models.Store.objects.all()
+    
+    context = {"store_list": store_list}
     return render(request, "stores/stores_list.html", context)
 
 def storeCreate(request):
