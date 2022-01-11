@@ -1,0 +1,23 @@
+
+{% with img_box_class="t-relative t-overflow-hidden" %}
+{% with img_box_before_class="before:t-content-[''] before:t-absolute before:t-inset-0 before:t-bg-[#00000000] group-hover:before:t-bg-[#00000011] before:t-transition-all" %}
+{% with img_box_after_class="after:t-content-[attr(data-before)] after:t-hidden group-hover:after:t-block after:t-no-underline after:t-text-white after:t-p-2 after:t-whitespace-nowrap after:t-absolute after:t-top-[85%] after:t-left-[50%] after:t-translate-y-[-50%] after:t-translate-x-[-50%] after:t-transition-all" %}
+
+<li class="t-flex t-flex-col t-group">
+    <a data-before="" class="{{ img_box_class }} {{ img_box_before_class }} {{ img_box_after_class }}" href="#">
+        <img class="t-block t-w-full t-transition-all group-hover:t-scale-105 t-relative t--z-50  t-object-cover" src="/media/example_photo/{{ forloop.counter }}.jpg" style="aspect-ratio: 1 / 1;">
+    </a>
+    <div class= "t-flex t-flex-col t-px-[0.5rem]">
+        <a class="t-mt-2" href="#">
+        {{store.name}}
+        </a>
+        <a class="t-mt-2 t-no-underline" href="#">
+            <span>{{ store.user.first_name }}</span>
+        </a>
+    </div>
+    
+</li>
+
+{% endwith %}
+{% endwith %}
+{% endwith %}

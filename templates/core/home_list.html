@@ -7,12 +7,12 @@ list
 {% block content %}
     <div class="t-container t-mx-auto">
         <div class="t-ml-[1rem] t-mb-[0.5rem]">
-            <h2 class="t-text-[1.2rem]">검색한 맛집</h2>
+            <h2 class="t-text-[1.2rem]">추천 맛집</h2>
         </div>
         
         <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
             {% for store in store_list %}
-                {% include "stores/stores_card.html" with store=store %}
+                {% include "core/home_card.html" with store=store %}
             {% endfor %}
         </ul>
     </div>

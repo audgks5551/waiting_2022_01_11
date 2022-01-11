@@ -7,27 +7,22 @@
         </li>
         <li class="t-flex t-items-center" >
             <a class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" href="{% url "stores:list" %}">
-                <img src="/media/nav-b/list-unordered.svg" />
+                <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
             </a>
         </li>
-        {% if user.is_authenticated %}
-            <li class="t-flex t-items-end">
-                <a class="t-flex t-items-center t-px-[2rem]" href="#">
-                    <img class="t-w-[2.3rem] t-object-cover" src="/media/nav-b/cart.png" />
-                </a>
-            </li>
-            <li class="t-flex t-items-center">
-                <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "users:logout" %}">
-                    <img src="/media/nav-b/logout.svg" />
-                </a>
-            </li>
-        {% else %}
-            <li class="t-flex t-items-center">
-                <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "users:login" %}">
-                    <img src="/media/nav-b/{{ person }}.svg" />
-                </a>
-            </li>
-        {% endif %}
+        <li class="t-flex t-items-center">
+            <a 
+                class="t-h-full t-flex t-items-center t-px-[2rem]"
+                href="
+                    {% if user.is_authenticated %}
+                        {% url "users:login" %}
+                    {% else %}
+                        #
+                    {% endif %}
+                ">
+                <img src="/media/nav-b/{{ person }}.svg" />
+            </a>
+        </li>
     </ul>
 </div>
     

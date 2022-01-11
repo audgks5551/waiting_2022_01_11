@@ -4,11 +4,11 @@
     <div class="t-h-px t-w-full t-bg-gray-400"></div>
 </div>
 <div class="t-flex t-flex-col t-w-full t-justify-center t-items-center">
-    <a href="{% url "users:kakao-login" %}" class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-[#FEE500]">
+    <a href="{% url "users:kakao-login" %}" class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-[#FEE500] hover:t-text-gray-600">
         <i class="fas fa-comment mr-2 fa-lg"></i>
         <span>카카오톡 {{ name }}</span>
     </a>
-    <a href="{% url "users:github-login" %}" class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-[#22272E] t-text-white">
+    <a href="{% url "users:github-login" %}" class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-[#22272E] t-text-white hover:t-text-gray-200">
         <i class="fab fa-github mr-2 fa-lg"></i>
         <span>깃허브 {{ name }}</span>
     </a>

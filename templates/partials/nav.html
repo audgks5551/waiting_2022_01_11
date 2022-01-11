@@ -1,32 +1,34 @@
-<ul class="lg:t-flex t-h-full t-items-center t-mt-[0.5rem] lg:t-mt-0 t-hidden">
-    <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap" >
-        <a class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" href="{% url "products:list" %}">
-            <span>베스트</span>
-        </a>
-    </li>
-    {% if user.is_authenticated %}
-        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
-            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "cart:list" %}">
-                <span>장바구니</span>
-            </a>
-        </li>
-        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
-            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "accounts:logout" %}">
-                <span>로그아웃</span>
-            </a>
-        </li>
-    {% else %}
-        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
-            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "accounts:signup" %}">
-                <span>회원가입</span>
-            </a>
-        </li>
-        <li class="t-flex t-h-full t-items-center t-border-b-[0.19rem] t-border-white hover:t-border-gray-700 t-whitespace-nowrap">
-            <a class="t-h-full t-flex t-items-center t-px-[2rem]" href="{% url "accounts:login" %}">
-                <span>로그인</span>
-            </a>
-        </li>
-    {% endif %}
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light t-bg-[#F0ECE3] rounded fixed-top t-px-[1rem] lg:t-px-[4rem] xl:t-px-[12.5rem] t-border-b-2" aria-label="Eleventh navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand t-flex t-items-center" href="{% url "core:home" %}">
+      <span>기달</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse lg:t-flex lg:t-justify-start lg:t-ml-[1rem] t-mt-[1rem] lg:t-mt-0" id="navbarsExample09">
+      <form class="d-flex lg:t-w-[20rem]">
+        <input class="form-control me-2" type="search" placeholder="먹고 싶은 음식을 적어주세요!" aria-label="Search">
+          <button class="btn btn-outline-dark t-whitespace-nowrap" type="submit">검색</button>
+      </form>
+    </div>
 
-    
+    <div class="collapse navbar-collapse lg:t-flex lg:t-justify-end" id="navbarsExample09">
+        
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "users:logout" %}">로그아웃</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "users:signup" %}">회원가입</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "users:login" %}">로그인</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

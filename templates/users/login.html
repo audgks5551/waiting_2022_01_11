@@ -29,6 +29,16 @@ login
                 <button class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-300 hover:t-bg-gray-400 t-text-white">로그인</button>
             </form>
         </div>
+        
+        <div class="t-flex t-w-full t-justify-center t-p-[0.2rem]">
+            <div class="t-mr-[1rem]">
+                <a class="hover:t-text-gray-600" href="{% url "users:signup" %}">회원가입</a>
+            </div>
+            <div>
+                <a class="hover:t-text-gray-600" href="">아이디/비밀번호 찾기</a>
+            </div>
+
+        </div>
 
         {% include "partials/social_login.html" with name="로그인" %}
     </div>

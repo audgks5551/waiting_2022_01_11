@@ -598,6 +598,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.5rem;
 }
 
+.t-mr-\[1rem\] {
+  margin-right: 1rem;
+}
+
 .t-block {
   display: block;
 }
@@ -644,6 +648,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-\[95\%\] {
   width: 95%;
+}
+
+.t-w-\[1rem\] {
+  width: 1rem;
+}
+
+.t-w-\[1\.5rem\] {
+  width: 1.5rem;
 }
 
 .t-max-w-full {
@@ -702,12 +714,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.125rem;
 }
 
+.t-rounded {
+  border-radius: 0.25rem;
+}
+
 .t-border {
   border-width: 1px;
 }
 
 .t-border-\[0\.126rem\] {
   border-width: 0.126rem;
+}
+
+.t-border-2 {
+  border-width: 2px;
 }
 
 .t-border-t {
@@ -767,6 +787,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
+.t-bg-teal-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
+}
+
 .t-object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -782,6 +807,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-p-\[2rem\] {
   padding: 2rem;
+}
+
+.t-p-\[1rem\] {
+  padding: 1rem;
+}
+
+.t-p-\[0\.2rem\] {
+  padding: 0.2rem;
+}
+
+.t-p-2 {
+  padding: 0.5rem;
 }
 
 .t-py-3 {
@@ -1099,6 +1136,26 @@ html > body {
 .hover\:t-bg-gray-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.hover\:t-text-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-gray-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-gray-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-gray-200:hover {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 .hover\:t-shadow-lg:hover {
