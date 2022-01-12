@@ -1,25 +1,25 @@
 import os
+from django.contrib.auth.decorators import login_required
 from django.core.files.base import ContentFile
 from django.http.request import HttpRequest
-from django.shortcuts import redirect, reverse
-from django.views.generic import FormView
+from django.shortcuts import redirect, render, reverse
+from django.views.generic import FormView, View
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.contrib import messages
 
 
 #
-from . import forms
-from users import models
+from . import forms, models, mixins 
 import requests
 
-class LoginView(FormView):
+class LoginView(mixins.LoggedOutOnlyView, FormView):
 
     """ Login View"""
 
     template_name = "users/login.html"
     form_class = forms.LoginForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
@@ -39,7 +39,7 @@ def log_out(request: HttpRequest):
     return redirect(reverse("core:home"))
 
 
-class SignUpView(FormView):
+class SignUpView(mixins.LoggedOutOnlyView, FormView):
 
     """ SignUp View """
 
@@ -73,7 +73,7 @@ def complete_verification(request, key):
 def github_login(request: HttpRequest):
 
     client_id = os.environ.get("GIT_ID")
-    redirect_uri = "http://localhost:8000/accounts/login/github/callback/"
+    redirect_uri = "http://localhost:8000/users/login/github/callback/"
     scope = "read:user"
 
     return redirect(f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}")
@@ -86,7 +86,7 @@ def github_collback(request: HttpRequest):
         client_id = os.environ.get("GIT_ID")
         client_secret = os.environ.get("GIT_SECRET")
         code = request.GET.get("code", None)
-        redirect_uri = "http://localhost:8000/accounts/login/github/callback/"
+        redirect_uri = "http://localhost:8000/users/login/github/callback/"
         if code is not None:
             token_request = requests.post(
                 f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}&redirect_uri={redirect_uri}",
@@ -200,3 +200,13 @@ def kakao_collback(request: HttpRequest):
     except KakaoException as e:
         messages.error(request, e)
         return redirect(reverse("users:login"))
+
+
+@login_required
+def showMyPage(request, user_id):
+    
+    """ Show My Page """
+    current_user_id = request.user.id
+    
+    context = {"current_user_id": current_user_id}
+    return render(request, "users/users_mypage.html", context)

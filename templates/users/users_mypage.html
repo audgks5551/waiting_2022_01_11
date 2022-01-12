@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+mypage
+{% endblock page_title %}
+
+{% block content %}
+    <div>
+    마이페이지
+    </div>
+    <a href="{% url "stores:create" %}" >가게 등록하기</a>
+    
+
+{% endblock content %}
+
+{% block nav-b %}
+    
+    {% include "partials/nav-b.html" with home="home" person="person" %}
+{% endblock nav-b %}

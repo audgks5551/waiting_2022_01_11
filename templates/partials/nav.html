@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse lg:t-flex lg:t-justify-start lg:t-ml-[1rem] t-mt-[1rem] lg:t-mt-0" id="navbarsExample09">
-      <form class="d-flex lg:t-w-[20rem]">
+      <form class="d-flex lg:t-w-[20rem]" action="{% url "stores:list" %}" type="GET">
         <input class="form-control me-2" type="search" placeholder="먹고 싶은 음식을 적어주세요!" aria-label="Search">
           <button class="btn btn-outline-dark t-whitespace-nowrap" type="submit">검색</button>
       </form>
@@ -17,6 +17,9 @@
         
       <ul class="navbar-nav mb-2 mb-lg-0">
         {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "users:mypage" current_user_id %}">마이페이지</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url "users:logout" %}">로그아웃</a>
           </li>

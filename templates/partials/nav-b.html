@@ -15,9 +15,9 @@
                 class="t-h-full t-flex t-items-center t-px-[2rem]"
                 href="
                     {% if user.is_authenticated %}
-                        {% url "users:login" %}
+                        {% url "users:mypage" current_user_id %}
                     {% else %}
-                        #
+                        {% url "users:login" %}
                     {% endif %}
                 ">
                 <img src="/media/nav-b/{{ person }}.svg" />
