@@ -1,8 +1,8 @@
 {
   "devDependencies": {
-    "tailwindcss": "^3.0.13"
+    "tailwindcss": "^3.0.7"
   },
   "scripts": {
-    "css" : "npx tailwindcss -i ./static/common.base.css -o ./static/common.css --watch"
+    "css": "npx tailwindcss -i ./static/common.base.css -o ./static/common.css --watch"
   }
 }
