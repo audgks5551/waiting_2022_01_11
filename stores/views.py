@@ -1,20 +1,16 @@
 from django.contrib import messages
-from django.http.response import HttpResponse
-from django.shortcuts import redirect, render, reverse
 from django.contrib.auth.decorators import login_required
-from django.views.generic import FormView
-from django.core.files.base import ContentFile
+from django.shortcuts import redirect, render, reverse
 
+# qrcode
 import qrcode
 from PIL import Image, ImageDraw
 from io import BytesIO
 from django.core.files import File
 
 #
-import qrcode
 from . import models
 from . import forms
-from users import mixins as user_mixins
 
 def listStore(request):
 
@@ -35,37 +31,63 @@ def detailStore(request, store_id):
     current_user_id = request.user.id
 
     store = models.Store.objects.get(id=store_id)
+    images = models.Image.objects.filter(store=store)
+    try:
+        first_image = images[0]
+        images = images[1:]
+    except:
+        first_image = None
+        images = None
+        
+    context = {
+        "store": store, 
+        "current_user_id": current_user_id,
+        "first_image": first_image,
+        "images": images
+    }
     
-    context = {"store": store, "current_user_id": current_user_id}
     return render(request, "stores/stores_detail.html", context)
     
+def createQRcode(store):
+    url = f"http://127.0.0.1:8000/stores/{store.id}"
+    qrcode_img=qrcode.make(url)
+    canvas=Image.new("RGB", (500,500),"white")
+    draw=ImageDraw.Draw(canvas)
+    canvas.paste(qrcode_img)
+    buffer=BytesIO()
+    canvas.save(buffer,"PNG")
+    store.qrcode.save(f'{store.name}-{store.id}.png',File(buffer))
+    canvas.close()
 
+@login_required
+def createStore(request):
 
-class createStore(user_mixins.LoggedInOnlyView, FormView):
+    current_user_id = request.user.id
 
-    form_class = forms.CreateStoreForm
-    template_name = "stores/stores_create.html"
+    if request.method == 'POST':
+        store_form = forms.CreateStoreForm(request.POST)
 
-    def form_valid(self, form):
-        store = form.save(commit=False)
-        store.user = self.request.user
+        if store_form.is_valid():
 
-        store.save()
+            store = store_form.save(commit=False)
+            store.user = request.user
 
-        url = f"http://127.0.0.1:8000/stores/{store.id}"
-        qrcode_img=qrcode.make(url)
-        canvas=Image.new("RGB", (500,500),"white")
-        draw=ImageDraw.Draw(canvas)
-        canvas.paste(qrcode_img)
-        buffer=BytesIO()
-        canvas.save(buffer,"PNG")
-        store.qrcode.save(f'{store.name}-{store.id}.png',File(buffer))
-        canvas.close()
+            store.save()
 
-        messages.success(self.request, "가게가 생성되었습니다")
-        return redirect(reverse("stores:detail", kwargs={"store_id": store.id}))
+            createQRcode(store)
+
+            images = request.FILES.getlist('images')
+            if images:
+                for image in images:
+                    models.Image.objects.create(file=image, store=store)
+
+            messages.success(request, "가게가 생성되었습니다")
+            return redirect(reverse("stores:detail", kwargs={"store_id": store.id}))
+    else:
+        store_form = forms.CreateStoreForm()
     
-    def get_context_data(self, **kwargs):    
-        context = super().get_context_data(**kwargs)                
-        context['current_user_id'] = self.request.user.id
-        return context
+    context = {
+        "store_form": store_form,
+        "current_user_id": current_user_id
+    }   
+    return render(request, "stores/stores_create.html", context)

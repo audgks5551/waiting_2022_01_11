@@ -6,6 +6,6 @@ app_name = "stores"
 
 urlpatterns = [
     path("<int:store_id>/", views.detailStore, name="detail"),
-    path("create/", views.createStore.as_view(), name="create"),
+    path("create/", views.createStore, name="create"),
     path("", views.listStore, name="list"),
 ]

@@ -7,29 +7,45 @@ detail
 
 {% block content %}
 <div class="t-container t-mx-auto t-grid t-grid-cols-1 lg:t-grid-cols-2">
-    <div class="t-flex t-justify-center">
-        <img class="t-w-[40rem] t-object-cover" src="/media/example_photo/{{ store.id }}.jpg" style="aspect-ratio: 1 / 1;"/>
-    </div>
-    
-    <div class="t-px-[2rem]">
-        <div class="t-mb-[0.5rem] t-pt-[1rem] t-flex t-items-center">
-            <img src="/media/products-detail/home-small.svg" />
-            <span class="t-pt-[0.3rem] t-ml-1 lg:t-text-[1.7rem] "></span>
-        </div>
-        <div class="t-pb-[0.3rem] t-text-[1.5rem] lg:t-text-[2.5rem] t-font-bold"></div>
-        <div>        
-            <form method="POST" action="">
-                {% csrf_token %}
-                {{ cart_add_form }}
-                <div class="t-flex t-justify-around">
-                    <button class="t-border t-border-black t-rounded-md t-mt-[2rem] t-w-[45%] t-py-[1.3rem] t-text-[1.2rem] hover:t-text-gray-400">장바구니</button>
-                    <button class="t-border t-border-black t-rounded-md t-mt-[2rem] t-w-[45%] t-py-[1.3rem] t-text-[1.2rem] hover:t-text-gray-400">구매하기</button>
+    {% if images %}
+        <div id="myCarousel" class="carousel slide t--mt-[1.35rem]" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                {% for image in images %}
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter|add:"1" }}"></button>
+                {% endfor %}      
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ first_image.file.url }}" alt="" class="">
                 </div>
-                
-            </form> 
+                {% for image in images %}
+                <div class="carousel-item">
+                    <img src="{{ image.file.url }}" alt="" class="">
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next " type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon " aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    {% else %}
+        <div class="t-w-[35rem] t-h-[35rem] t-bg-gray-400 t-rounded"></div>
+    {% endif%}
+
+    <div class="t-px-[2rem]">
+        <div class="t-pb-[0.3rem] t-text-[1.5rem] lg:t-text-[2.5rem] t-font-bold"></div>
+            <a href="{% url "waiting:create" %}">
+                <div class="t-flex t-justify-around">
+                    <button class="t-border t-border-black t-rounded-md t-mt-[2rem] t-w-[45%] t-py-[1.3rem] t-text-[1.2rem] hover:t-text-gray-400">기다리기</button>
+                </div>
+            </a>
     </div>
-    
 </div>
 {% endblock %}
 
@@ -37,3 +53,8 @@ detail
     
     {% include "partials/nav-b.html" with home="home" person="person" %}
 {% endblock nav-b %}
+
+
+<!--
+<div><img src="{{ store.qrcode.url }}" class='' height='235' width='235'></div>
+-->

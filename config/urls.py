@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path("waiting/", include("waiting.urls", namespace="waiting")),
     path("", include("core.urls", namespace="core")),
     path("users/", include("users.urls", namespace="users")),
     path("stores/", include("stores.urls", namespace="stores")),
