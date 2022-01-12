@@ -1,1 +1,23 @@
-웨이팅
+{% extends "base.html" %}
+
+{% block page_title %}
+create
+{% endblock page_title %}
+
+{% block content %}
+    <div class="t-container t-mx-auto">
+        <div class="t-ml-[1rem] t-mb-[0.5rem]">
+            <h2 class="t-text-[1.2rem]">웨이팅</h2>
+        </div>
+        
+        <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
+        </ul>
+    </div>
+    
+
+{% endblock content %}
+
+{% block nav-b %}
+    
+    {% include "partials/nav-b.html" with home="home" person="person" %}
+{% endblock nav-b %}

@@ -5,11 +5,34 @@ mypage
 {% endblock page_title %}
 
 {% block content %}
-    <div>
-    마이페이지
+    <div class="t-container t-mx-auto">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-mb-[1rem] t-rounded">
+            <div class="t-border-b t-py-4">
+                <span class="t-ml-[1rem]">마이페이지</span>
+            </div>
+        </div>
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
+            
+
+            <a href="#" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                <span class="t-ml-[1rem]">전체 문의한 내용</span>
+            </a>
+            <a href="#" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                <span class="t-ml-[1rem]">전체 기다린 흔적</span>
+            </a>
+            <a href="{% url "stores:create" %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                <span class="t-ml-[1rem]">가게 등록하기</span>
+            </a>
+            <a href="#" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                <span class="t-ml-[1rem]">기달 만들기</span>
+            </a>
+
+            <a href="{% url "users:logout" %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                <span class="t-ml-[1rem]">로그아웃</span>
+            </a>
+        </div>
+        
     </div>
-    <a href="{% url "stores:create" %}" >가게 등록하기</a>
-    
 
 {% endblock content %}
 
