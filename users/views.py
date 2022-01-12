@@ -206,6 +206,7 @@ def kakao_collback(request: HttpRequest):
 def showMyPage(request, user_id):
     
     """ Show My Page """
+
     current_user_id = request.user.id
     
     context = {"current_user_id": current_user_id}

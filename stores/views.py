@@ -4,7 +4,11 @@ from django.shortcuts import redirect, render, reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import FormView
 from django.core.files.base import ContentFile
-from PIL import Image
+
+import qrcode
+from PIL import Image, ImageDraw
+from io import BytesIO
+from django.core.files import File
 
 #
 import qrcode
@@ -45,13 +49,19 @@ class createStore(user_mixins.LoggedInOnlyView, FormView):
     def form_valid(self, form):
         store = form.save(commit=False)
         store.user = self.request.user
+
         store.save()
 
-        url = f"http://127.0.0.1:8000/stores/detail/{store.id}"
-        img = qrcode.make(url)
-        #img.save(f"media/stores/qrcode/{store.id}.png")
-        #img = Image.open(f"media/stores/qrcode/{store.id}.png")
-        #print(vars(img))
+        url = f"http://127.0.0.1:8000/stores/{store.id}"
+        qrcode_img=qrcode.make(url)
+        canvas=Image.new("RGB", (500,500),"white")
+        draw=ImageDraw.Draw(canvas)
+        canvas.paste(qrcode_img)
+        buffer=BytesIO()
+        canvas.save(buffer,"PNG")
+        store.qrcode.save(f'{store.name}-{store.id}.png',File(buffer))
+        canvas.close()
+
         messages.success(self.request, "가게가 생성되었습니다")
         return redirect(reverse("stores:detail", kwargs={"store_id": store.id}))
     
