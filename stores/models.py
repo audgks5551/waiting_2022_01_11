@@ -82,8 +82,8 @@ class Store(models.Model):
         except ValueError:
             return None
 
-    def get_next_four_images(self):
-        images = self.images.all()[1:5]
+    def get_images(self):
+        images = self.images.all()
         return images
 
 

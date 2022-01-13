@@ -12,10 +12,10 @@ class StartWaiting(core_models.TimeStampedModel):
 
 class Waiting(core_models.TimeStampedModel):
 
-    number  = models.PositiveSmallIntegerField("대기번호")
-    time    = models.PositiveSmallIntegerField("대기시간")
-    user    = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    store   = models.ForeignKey(Store, on_delete=models.CASCADE)
+        number              = models.PositiveSmallIntegerField("대기번호")
+        time                = models.PositiveSmallIntegerField("대기시간")
+        user                = models.ForeignKey(User, on_delete=models.CASCADE)
+        startWaiting        = models.ForeignKey(StartWaiting, on_delete=models.CASCADE)
     
 
 

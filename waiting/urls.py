@@ -5,6 +5,7 @@ from . import views
 app_name = "waiting"
 
 urlpatterns = [
-    path("start/", views.startWaiting, name="start"),
-    path("create/", views.createWaiting, name="create"),
+    path("", views.listWaiting, name="list"),
+    path("<int:store_id>/detail/<int:waiting_id>/", views.detailWaiting, name="detail"),
+    path("<int:store_id>/create/", views.createWaiting, name="create"),
 ]

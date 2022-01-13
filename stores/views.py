@@ -31,7 +31,7 @@ def detailStore(request, store_id):
     current_user_id = request.user.id
 
     store = models.Store.objects.get(id=store_id)
-        
+
     context = {
         "store": store, 
         "current_user_id": current_user_id

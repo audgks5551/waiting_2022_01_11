@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+start
+{% endblock page_title %}
+
+{% block content %}
+    <div class="t-container t-mx-auto">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-mb-[1rem] t-rounded">
+            <div class="t-border-b t-py-4">
+                <span class="t-ml-[1rem] t-text-[1.2rem]">기달을 시작할 스토어를 눌러주세요</span>
+            </div>
+        </div>
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
+            {% for store in store_list %}
+            <a href="{% url "waiting:create" store.id %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                <span class="t-ml-[1rem]">{{ store.name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+
+{% endblock content %}
+
+{% block nav-b %}
+    
+    {% include "partials/nav-b.html" with home="home" person="person" %}
+{% endblock nav-b %}
