@@ -5,5 +5,6 @@ from . import views
 app_name = "waiting"
 
 urlpatterns = [
-    path("waiting/", views.createWaiting, name="create"),
+    path("start/", views.startWaiting, name="start"),
+    path("create/", views.createWaiting, name="create"),
 ]
