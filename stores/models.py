@@ -44,12 +44,11 @@ class Tag(AbstractItem):
     class Meta:
         verbose_name_plural = "tags"
 
-
 class Image(models.Model):
 
     """ 이미지 업로드 모델 정의 """
 
-    store = models.ForeignKey("Store", on_delete=models.CASCADE)
+    store = models.ForeignKey("Store", related_name="images", on_delete=models.CASCADE)
     file = models.ImageField(blank=True, upload_to="stores/images")
 
 
@@ -64,17 +63,30 @@ class Store(models.Model):
     store_type = models.ForeignKey(
         "StoreType", related_name="stores", on_delete=models.SET_NULL, null=True
     )
-    food_type = models.ManyToManyField(
-        "FoodType", related_name="stores", blank=True
+    food_type = models.ForeignKey(
+        "FoodType", related_name="stores", on_delete=models.SET_NULL, null=True
     )
     amenities = models.ManyToManyField(
         "Amenity", related_name="stores", blank=True
     )
-    tags = models.ManyToManyField(
-        "Tag", related_name="stores", blank=True
-    )
+    tags = models.CharField("태그",max_length=200, default="")
+
 
     def __str__(self):
         return str(f"{self.name}")
+    
+    def first_image(self):
+        try:
+            image, = self.images.all()[:1]
+            return image.file.url
+        except ValueError:
+            return None
+
+    def get_next_four_images(self):
+        images = self.images.all()[1:5]
+        return images
+
+
+
 
 

@@ -31,19 +31,10 @@ def detailStore(request, store_id):
     current_user_id = request.user.id
 
     store = models.Store.objects.get(id=store_id)
-    images = models.Image.objects.filter(store=store)
-    try:
-        first_image = images[0]
-        images = images[1:]
-    except:
-        first_image = None
-        images = None
         
     context = {
         "store": store, 
-        "current_user_id": current_user_id,
-        "first_image": first_image,
-        "images": images
+        "current_user_id": current_user_id
     }
     
     return render(request, "stores/stores_detail.html", context)
@@ -76,7 +67,7 @@ def createStore(request):
 
             createQRcode(store)
 
-            images = request.FILES.getlist('images')
+            images = request.FILES.getlist('file')
             if images:
                 for image in images:
                     models.Image.objects.create(file=image, store=store)

@@ -5,7 +5,7 @@
 
 <li class="t-flex t-flex-col t-group">
     <a data-before="" class="{{ img_box_class }} {{ img_box_before_class }} {{ img_box_after_class }}" href="{% url "stores:detail" store.id %}">
-        <img class="t-block t-w-full t-transition-all group-hover:t-scale-105 t-relative t--z-50  t-object-cover" src="/media/example_photo/{{ forloop.counter }}.jpg" style="aspect-ratio: 1 / 1;">
+        <img class="t-block t-w-full t-transition-all group-hover:t-scale-105 t-relative t--z-50  t-object-cover" src="{{ store.first_image }}" style="aspect-ratio: 1 / 1;">
     </a>
     <div class= "t-flex t-flex-col t-px-[0.5rem]">
         <a class="t-mt-2" href="{% url "stores:detail" store.id %}">
