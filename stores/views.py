@@ -85,9 +85,11 @@ def createStore(request):
             return redirect(reverse("stores:detail", kwargs={"store_id": store.id}))
     else:
         store_form = forms.CreateStoreForm()
+        add_photo_form = forms.AddPhotoForm()
     
     context = {
         "store_form": store_form,
-        "current_user_id": current_user_id
+        "current_user_id": current_user_id,
+        "add_photo_form": add_photo_form
     }   
     return render(request, "stores/stores_create.html", context)

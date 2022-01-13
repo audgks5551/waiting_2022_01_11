@@ -5,13 +5,36 @@ create
 {% endblock page_title %}
 
 {% block content %}
+    <div class="t-container t-mx-auto t-flex t-flex-col t-justify-center t-items-center t-border t-w-[95%] lg:t-w-[50%] xl:t-w-[35%] t-p-[2rem] t-flex-1">
+        
+        <div class="t-mb-[1.5rem] t-text-[1.5rem]">
+            <span>스토어 만들기</span>
+        </div>
 
-    <div>스토어 만들기</div>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ store_form }}
-        <input type="file" name="images" multiple>
-        <input type="submit" value="Submit"/>
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <span class="text-red-500 font-medium text-sm">{{error}}</span> 
+            {% endfor %}
+        {% endif %}
+
+        <div class="t-w-full">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <div><span>정보</span></div>
+                    <div>{{ store_form }}</div>
+                </div>
+                
+                <div class="t-mt-[1rem]">
+                    <div><span>이미지 업로드</span></div>
+                    <div>{{ add_photo_form }}</div>
+                </div>
+                <button class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-300 hover:t-bg-gray-400 t-text-white">만들기</button>
+            </form>    
+        </div>
+
+    </div>
+    
 {% endblock content %}
 
 {% block nav-b %}
