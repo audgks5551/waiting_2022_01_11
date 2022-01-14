@@ -3,6 +3,7 @@ from django.db import models
 #
 from core import models as core_models
 from users.models import User
+from core import managers
 
 class AbstractItem(core_models.TimeStampedModel):
 
@@ -70,6 +71,7 @@ class Store(models.Model):
         "Amenity", related_name="stores", blank=True
     )
     tags = models.CharField("태그",max_length=200, default="")
+    objects = managers.CustomModelManager()
 
 
     def __str__(self):

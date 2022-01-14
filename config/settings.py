@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     "stores.apps.StoresConfig",
     "users.apps.UsersConfig",
     "waiting.apps.WaitingConfig",
+
+    # 써드파티
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [

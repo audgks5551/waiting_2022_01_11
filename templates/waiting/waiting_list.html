@@ -12,11 +12,19 @@ start
             </div>
         </div>
         <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
-            {% for store in store_list %}
-            <a href="{% url "waiting:create" store.id %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
-                <span class="t-ml-[1rem]">{{ store.name }}</span>
-            </a>
-            {% endfor %}
+            {% if startWaiting_list %}
+                {% for startWaiting in startWaiting_list %}
+                    <a href="{% url "waiting:detail" startWaiting.id %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                        <span class="t-ml-[1rem]">{{ startWaiting.store.name }}</span>
+                    </a>
+                {% endfor %}
+            {% else %}
+                   {% for store in store_list %}
+                    <a href="{% url "waiting:create" store.id %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
+                        <span class="t-ml-[1rem]">{{ store.name }}</span>
+                    </a>
+                {% endfor %}
+            {% endif %}
         </div>
         
     </div>

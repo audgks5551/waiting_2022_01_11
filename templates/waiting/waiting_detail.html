@@ -6,13 +6,21 @@ start
 
 {% block content %}
     <div class="t-container t-mx-auto">
-        <div class="t-ml-[1rem] t-mb-[0.5rem]">
-            <h2 class="t-text-[1.2rem]">기달 시작하기</h2>
+        <div class="t-grid t-grid-cols-1 lg:grid-cols-2">
+            <div class="t-mr-[1rem]">
+                <span class="t-text-[1.5rem]">기달 시작하기</span>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-success btn-lg t-mr-[1rem] lg:t-px-[2rem]">시작</button>
+                <button type="button" class="btn btn-outline-danger btn-lg t-mr-[1rem] lg:t-px-[2rem]">중지</button>
+                <button type="button" class="btn btn-outline-warning btn-lg t-mr-[1rem] lg:t-px-[2rem]">초기화</button>
+            </div>
         </div>
         
         <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
         </ul>
     </div>
+    <div>{{startWaiting_id}}</div>
     
 
 {% endblock content %}
