@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+qrcode = "*"
+mysqlclient = "*"
+requests = "*"
+django-bootstrap5 = "*"
+django-dotenv = "*"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
+Django = "*"
+Pillow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

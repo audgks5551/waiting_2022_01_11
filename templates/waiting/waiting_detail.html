@@ -11,17 +11,24 @@ start
                 <span class="t-text-[1.5rem]">기달 시작하기</span>
             </div>
             <div>
-                <button type="button" class="btn btn-outline-success btn-lg t-mr-[1rem] lg:t-px-[2rem]">시작</button>
-                <button type="button" class="btn btn-outline-danger btn-lg t-mr-[1rem] lg:t-px-[2rem]">중지</button>
-                <button type="button" class="btn btn-outline-warning btn-lg t-mr-[1rem] lg:t-px-[2rem]">초기화</button>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class="t-hidden" value="0" name="mode" />
+                    <button type="submit" class="btn btn-outline-success btn-lg t-mr-[1rem] lg:t-px-[2rem]">시작</button>
+                </form>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class="t-hidden" value="1" name="mode" />
+                    <button type="submit" class="btn btn-outline-danger btn-lg t-mr-[1rem] lg:t-px-[2rem]">중지</button>
+                </form>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class="t-hidden" value="2" name="mode" />
+                    <button type="submit" class="btn btn-outline-warning btn-lg t-mr-[1rem] lg:t-px-[2rem] hover:t-text-white">초기화</button>
+                </form>
+                
             </div>
         </div>
-        
-        <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
-        </ul>
-    </div>
-    <div>{{startWaiting_id}}</div>
-    
 
 {% endblock content %}
 

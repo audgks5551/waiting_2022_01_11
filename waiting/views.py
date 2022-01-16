@@ -7,23 +7,19 @@ from stores import models as stores_models
 from waiting import models as waiting_models
 from . import forms
 
+
 @login_required
 def listWaiting(request):
 
     current_user_id = request.user.id
-    startWaiting_list = waiting_models.StartWaiting.objects.filter(master_id=current_user_id)
+    startWaiting_list = waiting_models.StartWaiting.objects.filter(
+        master_id=current_user_id)
     store_list = stores_models.Store.objects.filter(user_id=current_user_id)
-    print(startWaiting_list)
-    print(store_list)
     get_store_minus_start = []
     for store in store_list:
         for startWaiting in startWaiting_list:
             if store.id == startWaiting.store.id:
                 get_store_minus_start.append(store)
-    
-    print(get_store_minus_start)
-
-
 
     context = {
         "current_user_id": current_user_id,
@@ -31,6 +27,7 @@ def listWaiting(request):
         "startWaiting_list": startWaiting_list
     }
     return render(request, "waiting/waiting_list.html", context)
+
 
 @login_required
 def createWaiting(request, store_id):
@@ -51,18 +48,19 @@ def createWaiting(request, store_id):
             return redirect(reverse("waiting:detail", kwargs={"startWaiting_id": startWaiting.id}))
     else:
         form = forms.StartWaitingForm()
-    
-    context = {"current_user_id": current_user_id, "form": form, "store_id": store_id}
+
+    context = {"current_user_id": current_user_id,
+               "form": form, "store_id": store_id}
     return render(request, "waiting/waiting_create.html", context)
+
 
 @login_required
 def detailWaiting(request, startWaiting_id):
 
     current_user_id = request.user.id
-    
-    context = {"current_user_id": current_user_id, "startWaiting_id": startWaiting_id}
+
+    print(request.POST.get("mode", "3"))
+
+    context = {"current_user_id": current_user_id,
+               "startWaiting_id": startWaiting_id}
     return render(request, "waiting/waiting_detail.html", context)
-
-
-
-
