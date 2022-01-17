@@ -6,6 +6,6 @@ app_name = "waiting"
 
 urlpatterns = [
     path("", views.listWaiting, name="list"),
-    path("start/<int:startWaiting_id>/", views.detailWaiting, name="detail"),
-    path("<int:store_id>/create/", views.createWaiting, name="create"),
+    path("detail/<int:startWaiting_id>/", views.detailWaiting, name="detail"),
+    path("<int:store_id>/add/", views.addUser, name="add"),
 ]

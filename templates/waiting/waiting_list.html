@@ -18,12 +18,6 @@ start
                         <span class="t-ml-[1rem]">{{ startWaiting.store.name }}</span>
                     </a>
                 {% endfor %}
-            {% else %}
-                   {% for store in store_list %}
-                    <a href="{% url "waiting:create" store.id %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
-                        <span class="t-ml-[1rem]">{{ store.name }}</span>
-                    </a>
-                {% endfor %}
             {% endif %}
         </div>
         

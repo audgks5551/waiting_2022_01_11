@@ -11,6 +11,7 @@ from django.core.files import File
 #
 from . import models
 from . import forms
+from waiting import forms as waiting_forms
 
 def listStore(request):
 
@@ -34,7 +35,8 @@ def detailStore(request, store_id):
 
     context = {
         "store": store, 
-        "current_user_id": current_user_id
+        "current_user_id": current_user_id,
+        "store_id": store_id
     }
     
     return render(request, "stores/stores_detail.html", context)
@@ -57,8 +59,8 @@ def createStore(request):
 
     if request.method == 'POST':
         store_form = forms.CreateStoreForm(request.POST)
-
-        if store_form.is_valid():
+        startWaiting_form = waiting_forms.StartWaitingForm(request.POST)
+        if store_form.is_valid() and startWaiting_form.is_valid():
 
             store = store_form.save(commit=False)
             store.user = request.user
@@ -71,16 +73,23 @@ def createStore(request):
             if images:
                 for image in images:
                     models.Image.objects.create(file=image, store=store)
+            
+            startWaiting = startWaiting_form.save(commit=False)
+            startWaiting.store_id = store.id
+            startWaiting.master_id = current_user_id
+            startWaiting.save()
 
             messages.success(request, "가게가 생성되었습니다")
             return redirect(reverse("stores:detail", kwargs={"store_id": store.id}))
     else:
         store_form = forms.CreateStoreForm()
+        startWaiting_form = waiting_forms.StartWaitingForm()
         add_photo_form = forms.AddPhotoForm()
     
     context = {
         "store_form": store_form,
         "current_user_id": current_user_id,
-        "add_photo_form": add_photo_form
+        "add_photo_form": add_photo_form,
+        "startWaiting_form": startWaiting_form,
     }   
     return render(request, "stores/stores_create.html", context)

@@ -21,3 +21,16 @@ class StartWaitingForm(forms.ModelForm):
         self.fields["wait_time"].label = ""
         self.fields["table_number"].label = ""
         self.fields["phone_number"].label = ""
+
+class WaitingForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Waiting
+        fields = ( "people_number", )
+        widgets = {
+            "people_number": forms.NumberInput()
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["people_number"].label = "인원 수"

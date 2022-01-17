@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 
 {% block page_title %}
-start
+add
 {% endblock page_title %}
 
 {% block content %}
     <div class="t-container t-mx-auto">
         <div class="t-grid t-grid-cols-1 lg:grid-cols-2">
             <div class="t-mr-[1rem]">
-                <span class="t-text-[1.5rem]">기달 시작하기</span>
+                <span class="t-text-[1.5rem]">기달 참여하기</span>
             </div>
             <div>
-                <a href="#" class="btn btn-outline-success btn-lg t-mr-[1rem] lg:t-px-[2rem]">시작</a>
-                <a href="#" class="btn btn-outline-danger btn-lg t-mr-[1rem] lg:t-px-[2rem]">중지</a>
-                <a href="#" class="btn btn-outline-warning btn-lg t-mr-[1rem] lg:t-px-[2rem] hover:t-text-white">초기화</a>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div>{{ form }}</div>
+                    <button class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-300 hover:t-bg-gray-400 t-text-white">기달 고고</button>
+                </form>
             </div>
+            
         </div>
 
 {% endblock content %}
