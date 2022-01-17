@@ -21,14 +21,19 @@ def listWaiting(request):
     }
     return render(request, "waiting/waiting_list.html", context)
 
+
 @login_required
 def detailWaiting(request, startWaiting_id):
 
     current_user_id = request.user.id
-    
+
+    waiting_list = waiting_models.Waiting.objects.filter(
+        startWaiting_id=startWaiting_id)
     context = {"current_user_id": current_user_id,
-               "startWaiting_id": startWaiting_id}
+               "startWaiting_id": startWaiting_id,
+               "waiting_list": waiting_list}
     return render(request, "waiting/waiting_detail.html", context)
+
 
 @login_required
 def addUser(request, store_id):
@@ -40,11 +45,11 @@ def addUser(request, store_id):
         form = forms.WaitingForm(request.POST)
         print(form)
         if form.is_valid():
-            print("들어왔음")   
+            print("들어왔음")
             Waiting = form.save(commit=False)
             Waiting.startWaiting_id = startWaiting.id
             Waiting.number = startWaiting.number
-            startWaiting.number += 1;
+            startWaiting.number += 1
             startWaiting.save()
             Waiting.user_id = current_user_id
             Waiting.time = startWaiting.wait_time * startWaiting.waiting_set.count()
@@ -52,9 +57,7 @@ def addUser(request, store_id):
             messages.success(request, f"기달 고고 대기번호:{Waiting.number}")
             return redirect(reverse("stores:detail", kwargs={"store_id": store_id}))
 
-
     form = forms.WaitingForm()
-        
 
-    context = {"current_user_id": current_user_id, "form": form }
+    context = {"current_user_id": current_user_id, "form": form}
     return render(request, "waiting/waiting_add.html", context)

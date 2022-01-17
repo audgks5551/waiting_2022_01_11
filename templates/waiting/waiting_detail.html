@@ -5,17 +5,31 @@ start
 {% endblock page_title %}
 
 {% block content %}
-    <div class="t-container t-mx-auto">
-        <div class="t-grid t-grid-cols-1 lg:grid-cols-2">
-            <div class="t-mr-[1rem]">
-                <span class="t-text-[1.5rem]">기달 시작하기</span>
+    <div class="t-container t-mx-auto t-w-[98%] lg:t-w-[50%] xl:t-w-[35%]">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%]  t-mb-[1rem] t-rounded">
+            <div class="t-py-4 t-text-center">
+                <span>기달 시작하기</span>
             </div>
-            <div>
+            <div class="t-p-[1rem] t-flex t-justify-around">
                 <a href="#" class="btn btn-outline-success btn-lg t-mr-[1rem] lg:t-px-[2rem]">시작</a>
                 <a href="#" class="btn btn-outline-danger btn-lg t-mr-[1rem] lg:t-px-[2rem]">중지</a>
                 <a href="#" class="btn btn-outline-warning btn-lg t-mr-[1rem] lg:t-px-[2rem] hover:t-text-white">초기화</a>
             </div>
         </div>
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
+            {% if waiting_list %}
+                {% for waiting in waiting_list %}
+                    <span class="t-border-b t-border-gray-350 t-py-4">
+                        <span class="t-ml-[1rem]">{{ waiting.user.first_name }}</span>
+                    </span>
+                {% endfor %}
+            {% else %}
+                <span class="t-border-b t-border-gray-350 t-py-4">
+                    <span class="t-ml-[1rem]">아직 대기가 없습니다</span>
+                </span>
+            {% endif %}
+        </div>
+    </div>
 
 {% endblock content %}
 

@@ -510,6 +510,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 10;
 }
 
+.t-z-30 {
+  z-index: 30;
+}
+
+.t-z-50 {
+  z-index: 50;
+}
+
+.t-z-0 {
+  z-index: 0;
+}
+
+.t--z-20 {
+  z-index: -20;
+}
+
 .t-mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -595,10 +611,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: grid;
 }
 
-.t-hidden {
-  display: none;
-}
-
 .t-h-\[3rem\] {
   height: 3rem;
 }
@@ -641,6 +653,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-\[45\%\] {
   width: 45%;
+}
+
+.t-w-\[90\%\] {
+  width: 90%;
+}
+
+.t-w-\[98\%\] {
+  width: 98%;
 }
 
 .t-max-w-full {
@@ -795,6 +815,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-p-\[0\.2rem\] {
   padding: 0.2rem;
+}
+
+.t-p-\[1rem\] {
+  padding: 1rem;
 }
 
 .t-px-\[0\.5rem\] {
