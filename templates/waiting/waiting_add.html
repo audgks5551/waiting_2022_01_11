@@ -5,20 +5,22 @@ add
 {% endblock page_title %}
 
 {% block content %}
-    <div class="t-container t-mx-auto">
-        <div class="t-grid t-grid-cols-1 lg:grid-cols-2">
-            <div class="t-mr-[1rem]">
-                <span class="t-text-[1.5rem]">기달 참여하기</span>
+    <div class="t-container t-mx-auto t-w-[90%] lg:t-w-[50%] xl:t-w-[35%]">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mb-[1rem] t-rounded">
+            <div class="t-border-b t-py-4">
+                <span class="t-ml-[1rem]">기달 참여하기</span>
             </div>
-            <div>
+            <div class="t-p-[1rem]">
                 <form method="POST">
                     {% csrf_token %}
                     <div>{{ form }}</div>
-                    <button class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-300 hover:t-bg-gray-400 t-text-white">기달 고고</button>
+                    <button
+                        class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-300 hover:t-bg-gray-400 t-text-white">기달
+                        고고</button>
                 </form>
             </div>
-            
         </div>
+    </div>
 
 {% endblock content %}
 

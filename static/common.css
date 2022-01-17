@@ -599,6 +599,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1rem;
 }
 
+.t--mt-\[1rem\] {
+  margin-top: -1rem;
+}
+
+.t--mt-\[1\.5rem\] {
+  margin-top: -1.5rem;
+}
+
+.t--mt-\[1\.2rem\] {
+  margin-top: -1.2rem;
+}
+
+.t--mt-\[1\.3rem\] {
+  margin-top: -1.3rem;
+}
+
+.t--mt-\[1\.4rem\] {
+  margin-top: -1.4rem;
+}
+
 .t-block {
   display: block;
 }
@@ -859,6 +879,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.t-py-\[3rem\] {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .t-pb-\[0\.3rem\] {

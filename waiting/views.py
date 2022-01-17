@@ -8,7 +8,7 @@ from waiting import models as waiting_models
 from . import forms
 
 
-@login_required
+@login_required(login_url='/users/login')
 def listWaiting(request):
 
     current_user_id = request.user.id
@@ -22,7 +22,7 @@ def listWaiting(request):
     return render(request, "waiting/waiting_list.html", context)
 
 
-@login_required
+@login_required(login_url='/users/login')
 def detailWaiting(request, startWaiting_id):
 
     current_user_id = request.user.id
@@ -35,7 +35,7 @@ def detailWaiting(request, startWaiting_id):
     return render(request, "waiting/waiting_detail.html", context)
 
 
-@login_required
+@login_required(login_url='/users/login')
 def addUser(request, store_id):
 
     current_user_id = request.user.id
