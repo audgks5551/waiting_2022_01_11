@@ -506,24 +506,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: -50;
 }
 
-.t-z-10 {
-  z-index: 10;
-}
-
-.t-z-30 {
-  z-index: 30;
-}
-
 .t-z-50 {
   z-index: 50;
 }
 
-.t-z-0 {
-  z-index: 0;
+.t-z-10 {
+  z-index: 10;
 }
 
-.t--z-20 {
-  z-index: -20;
+.t-z-0 {
+  z-index: 0;
 }
 
 .t-mx-auto {
@@ -597,26 +589,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mb-\[1rem\] {
   margin-bottom: 1rem;
-}
-
-.t--mt-\[1rem\] {
-  margin-top: -1rem;
-}
-
-.t--mt-\[1\.5rem\] {
-  margin-top: -1.5rem;
-}
-
-.t--mt-\[1\.2rem\] {
-  margin-top: -1.2rem;
-}
-
-.t--mt-\[1\.3rem\] {
-  margin-top: -1.3rem;
-}
-
-.t--mt-\[1\.4rem\] {
-  margin-top: -1.4rem;
 }
 
 .t-block {
@@ -781,14 +753,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
 }
 
-.t-border-gray-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
 .t-border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.t-border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
 .t-bg-\[\#F0ECE3\] {
@@ -841,6 +813,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1rem;
 }
 
+.t-p-\[0\.3rem\] {
+  padding: 0.3rem;
+}
+
 .t-px-\[0\.5rem\] {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -871,19 +847,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 1.25rem;
 }
 
-.t-py-\[1\.3rem\] {
-  padding-top: 1.3rem;
-  padding-bottom: 1.3rem;
-}
-
 .t-py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.t-py-\[3rem\] {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+.t-py-\[1\.3rem\] {
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+}
+
+.t-px-\[1\.7rem\] {
+  padding-left: 1.7rem;
+  padding-right: 1.7rem;
 }
 
 .t-pb-\[0\.3rem\] {

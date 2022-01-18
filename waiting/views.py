@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 #
 from stores import models as stores_models
-from waiting import models as waiting_models
+from . import models as waiting_models
 from . import forms
 
 
@@ -45,7 +45,6 @@ def addUser(request, store_id):
         form = forms.WaitingForm(request.POST)
         print(form)
         if form.is_valid():
-            print("들어왔음")
             Waiting = form.save(commit=False)
             Waiting.startWaiting_id = startWaiting.id
             Waiting.number = startWaiting.number
@@ -61,3 +60,28 @@ def addUser(request, store_id):
 
     context = {"current_user_id": current_user_id, "form": form}
     return render(request, "waiting/waiting_add.html", context)
+
+
+@login_required(login_url='/users/login')
+def startMode(request, startWaiting_id):
+    startWaiting = waiting_models.StartWaiting.objects.get(id=startWaiting_id)
+    startWaiting.mode = True
+    startWaiting.save()
+    return redirect(reverse("waiting:detail", kwargs={"startWaiting_id": startWaiting_id}))
+
+
+@login_required(login_url='/users/login')
+def stopMode(request, startWaiting_id):
+    startWaiting = waiting_models.StartWaiting.objects.get(id=startWaiting_id)
+    startWaiting.mode = False
+    startWaiting.save()
+    return redirect(reverse("waiting:detail", kwargs={"startWaiting_id": startWaiting_id}))
+
+
+@login_required(login_url='/users/login')
+def resetMode(request, startWaiting_id):
+    waiting_list = waiting_models.Waiting.objects.filter(
+        startWaiting_id=startWaiting_id)
+    for waiting in waiting_list:
+        waiting.delete()
+    return redirect(reverse("waiting:detail", kwargs={"startWaiting_id": startWaiting_id}))

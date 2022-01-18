@@ -12,45 +12,49 @@ from django.core.files import File
 from . import models
 from . import forms
 from waiting import forms as waiting_forms
+from waiting import models as waiting_models
+
 
 def listStore(request):
-
     """ List Store """
 
     current_user_id = request.user.id
 
     store_list = models.Store.objects.all()
-    
+
     context = {"store_list": store_list, "current_user_id": current_user_id}
     return render(request, "stores/stores_list.html", context)
 
 
 def detailStore(request, store_id):
-
     """ Detail Store """
 
     current_user_id = request.user.id
 
     store = models.Store.objects.get(id=store_id)
-
+    waiting_mode = waiting_models.StartWaiting.objects.get(
+        store_id=store_id).mode
     context = {
-        "store": store, 
+        "store": store,
         "current_user_id": current_user_id,
-        "store_id": store_id
+        "store_id": store_id,
+        "waiting_mode": waiting_mode
     }
-    
+
     return render(request, "stores/stores_detail.html", context)
-    
+
+
 def createQRcode(store):
     url = f"http://127.0.0.1:8000/stores/{store.id}"
-    qrcode_img=qrcode.make(url)
-    canvas=Image.new("RGB", (500,500),"white")
-    draw=ImageDraw.Draw(canvas)
+    qrcode_img = qrcode.make(url)
+    canvas = Image.new("RGB", (500, 500), "white")
+    draw = ImageDraw.Draw(canvas)
     canvas.paste(qrcode_img)
-    buffer=BytesIO()
-    canvas.save(buffer,"PNG")
-    store.qrcode.save(f'{store.name}-{store.id}.png',File(buffer))
+    buffer = BytesIO()
+    canvas.save(buffer, "PNG")
+    store.qrcode.save(f'{store.name}-{store.id}.png', File(buffer))
     canvas.close()
+
 
 @login_required
 def createStore(request):
@@ -73,7 +77,7 @@ def createStore(request):
             if images:
                 for image in images:
                     models.Image.objects.create(file=image, store=store)
-            
+
             startWaiting = startWaiting_form.save(commit=False)
             startWaiting.store_id = store.id
             startWaiting.master_id = current_user_id
@@ -85,11 +89,11 @@ def createStore(request):
         store_form = forms.CreateStoreForm()
         startWaiting_form = waiting_forms.StartWaitingForm()
         add_photo_form = forms.AddPhotoForm()
-    
+
     context = {
         "store_form": store_form,
         "current_user_id": current_user_id,
         "add_photo_form": add_photo_form,
         "startWaiting_form": startWaiting_form,
-    }   
+    }
     return render(request, "stores/stores_create.html", context)
