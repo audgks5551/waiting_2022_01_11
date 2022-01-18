@@ -51,7 +51,7 @@ def addUser(request, store_id):
             startWaiting.number += 1
             startWaiting.save()
             Waiting.user_id = current_user_id
-            Waiting.time = startWaiting.wait_time * startWaiting.waiting_set.count()
+            Waiting.time = startWaiting.wait_time * startWaiting.waitings.count()
             Waiting.save()
             messages.success(request, f"기달 고고 대기번호:{Waiting.number}")
             return redirect(reverse("stores:detail", kwargs={"store_id": store_id}))
