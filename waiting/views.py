@@ -61,6 +61,13 @@ def addUser(request, store_id):
     context = {"current_user_id": current_user_id, "form": form}
     return render(request, "waiting/waiting_add.html", context)
 
+@login_required(login_url='/users/login')
+def removeUser(request, waiting_id):
+    waiting_user = waiting_models.Waiting.objects.get(id=waiting_id)
+    startWaiting_id = waiting_user.startWaiting_id
+    waiting_user.delete()
+    return redirect(reverse("waiting:detail", kwargs={"startWaiting_id": startWaiting_id}))
+
 
 @login_required(login_url='/users/login')
 def startMode(request, startWaiting_id):

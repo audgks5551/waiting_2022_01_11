@@ -8,7 +8,7 @@ start
     <div class="t-container t-mx-auto t-w-[98%] lg:t-w-[50%] xl:t-w-[35%]">
         <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%]  t-mb-[1rem] t-rounded">
             <div class="t-py-4 t-text-center">
-                <span>기달 시작하기</span>
+                <span class="t-font-bold t-text-[1.3rem]">웨이팅 관리</span>
             </div>
             <div class="t-p-[1rem] t-flex t-justify-around">
                 <button data-bs-toggle="modal" data-bs-target="#start" class="waiting-start btn btn-outline-success btn-lg t-mr-[1rem] lg:t-px-[2rem]">시작</button>
@@ -18,26 +18,20 @@ start
         </div>
         <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
             {% if waiting_list %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">대기번호</th>
-                            <th scope="col">인원수</th>
-                            <th scope="col">수정</th>
-                            <th scope="col">삭제</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for waiting in waiting_list %}
-                            <tr>
-                                <td scope="row">{{ waiting.number }}</th>
-                                <td>{{ waiting.people_number }}</td>
-                                <td><button>수정</button></td>
-                                <td><button>삭제</button></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <ul>
+                    <li class="t-flex t-justify-around t-items-center t-p-[1rem] t-border-b">
+                        <div class="t-font-bold">대기 번호</div>
+                        <div class="t-font-bold">인원 수</div>
+                        <div class="t-font-bold">개별 취소</div>
+                    </li>
+                    {% for waiting in waiting_list %}
+                    <li class="t-flex t-justify-around t-items-center t-p-[1rem] t-border-b">
+                        <div>{{ waiting.number }}</div>
+                        <div class="t-pl-[2rem]">{{ waiting.people_number }}</div>
+                        <div class="t-ml-[1rem]"><a href="{% url "waiting:remove" waiting.id %}" class="btn btn-danger">취소</a></div>
+                    </li>
+                    {% endfor %}
+                </ul>
             {% else %}
                 <span class="t-border-b t-border-gray-350 t-py-4">
                     <span class="t-ml-[1rem]">아직 대기가 없습니다</span>
