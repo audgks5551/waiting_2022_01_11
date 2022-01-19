@@ -14,7 +14,6 @@ class StartWaiting(core_models.TimeStampedModel):
         User, related_name="startWaitings", on_delete=models.CASCADE)
     wait_time = models.PositiveSmallIntegerField("한 테이블 당 식사시간")
     table_number = models.PositiveSmallIntegerField("테이블 수")
-    phone_number = models.CharField("전화번호", max_length=11, default="")
     number = models.PositiveSmallIntegerField("대기번호", default=1)
     mode = models.BooleanField(default=False)
 

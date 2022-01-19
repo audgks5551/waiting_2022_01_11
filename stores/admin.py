@@ -4,7 +4,8 @@ from django.utils.html import mark_safe
 from . import models as stores_models
 from . import models
 
-@admin.register(models.StoreType, models.FoodType, models.Amenity, models.Tag)
+
+@admin.register(models.StoreType, models.FoodType, models.Menu, models.Amenity, models.Theme, models.Taste, models.Tag)
 class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """
@@ -15,5 +16,6 @@ class ItemAdmin(admin.ModelAdmin):
         return obj.stores.count()
 
     pass
+
 
 admin.site.register(stores_models.Store)

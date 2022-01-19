@@ -3,68 +3,66 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
 }
 
 html > body {
-    font-family: "GmarketSansMedium";
-    text-underline-position: under;
+  font-family: "GmarketSansMedium";
+  text-underline-position: under;
 }
 
 @keyframes messageFadeInMedium {
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    5% {
-      opacity: 1;
-      transform: translateY(60px);
-    }
-    95% {
-      opacity: 1;
-      transform: translateY(60px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
+  5% {
+    opacity: 1;
+    transform: translateY(60px);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
 
 @keyframes messageFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-}
-    5% {
-        opacity: 1;
-        transform: translateY(60px);
-}
-    95% {
-        opacity: 1;
-        transform: translateY(60px);
-}
-    100% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-}
-  
-.t-message {
-    animation: messageFadeIn 5s ease-in-out forwards;
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
   }
+  5% {
+    opacity: 1;
+    transform: translateY(60px);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
 
-
+.t-message {
+  animation: messageFadeIn 5s ease-in-out forwards;
+}
 
 @media (min-width: 1280px) {
-    .t-message-lg {
-        animation: messageFadeInMedium 5s ease-in-out forwards;
-    }
+  .t-message-lg {
+    animation: messageFadeInMedium 5s ease-in-out forwards;
+  }
 }
 
 .text-underline-position-under {
-    text-underline-position: under;
+  text-underline-position: under;
 }
 
 div > input,
@@ -83,7 +81,10 @@ select {
   margin-bottom: 0.5rem;
 }
 
-#id_amenities {
+#id_amenities,
+#id_menu,
+#id_tastes,
+#id_themes {
   border-width: 1px;
   padding: 1.25rem;
 }

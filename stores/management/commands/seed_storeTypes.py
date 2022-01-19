@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from stores.models import FoodType
+from stores.models import StoreType
 
 
 class Command(BaseCommand):
@@ -11,7 +11,7 @@ class Command(BaseCommand):
             "--number", help="")
 
     def handle(self, *args, **options):
-        foodTypes = [
+        storeTypes = [
             "양식",
             "일식",
             "중식",
@@ -21,6 +21,6 @@ class Command(BaseCommand):
             "카페",
             "주점",
         ]
-        for f in foodTypes:
-            FoodType.objects.create(name=f)
-        self.stdout.write(self.style.SUCCESS("FoodType created!"))
+        for s in storeTypes:
+            StoreType.objects.create(name=s)
+        self.stdout.write(self.style.SUCCESS("StoreType created!"))

@@ -13,6 +13,7 @@ django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 Django = "*"
 Pillow = "*"
 django-seed = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

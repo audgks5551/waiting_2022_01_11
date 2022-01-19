@@ -35,6 +35,14 @@ class FoodType(AbstractItem):
         verbose_name = "Food Detail Type"
 
 
+class Menu(AbstractItem):
+
+    """ 음식 메뉴 모델 정의"""
+
+    class Meta:
+        verbose_name_plural = "Menus"
+
+
 class Amenity(AbstractItem):
 
     """ 편의 시설 모델 정의 """
@@ -59,14 +67,6 @@ class Taste(AbstractItem):
         verbose_name_plural = "Tastes"
 
 
-class Menu(AbstractItem):
-
-    """ 음식 메뉴 모델 정의"""
-
-    class Meta:
-        verbose_name_plural = "Menus"
-
-
 class Tag(AbstractItem):
 
     """ 태그 모델 정의"""
@@ -88,11 +88,12 @@ class Store(models.Model):
 
     """ 가게 모델 정의 """
 
-    name = models.CharField("가게 이름", max_length=30)
+    name = models.CharField("가게 이름", max_length=100)
     qrcode = models.ImageField(blank=True, upload_to="stores/qrcode/")
     user = models.ForeignKey(
         User, related_name="stores", on_delete=models.CASCADE)
     address = models.CharField("가게 주소", max_length=140, default="")
+    phone_number = models.CharField("가게 전화번호", max_length=20, default="")
     store_type = models.ForeignKey(
         "StoreType", related_name="stores", on_delete=models.SET_NULL, null=True
     )

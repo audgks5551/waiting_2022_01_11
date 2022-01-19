@@ -5,4 +5,5 @@ Pillow
 requests
 django_bootstrap5
 django-dotenv
-django_seed
+django-seed
+psycopg2-binary

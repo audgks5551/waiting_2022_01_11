@@ -1,9 +1,11 @@
+from email.policy import default
 import random
+import csv
 from django.core.management.base import BaseCommand
 from django.contrib.admin.utils import flatten
 from django_seed import Seed
 from stores import models as stores_models
-from users import models as user_models
+from users import models as users_models
 
 
 class Command(BaseCommand):
@@ -12,38 +14,37 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--number", default=2, type=int, help="How many rooms you want to create"
+            "file_path", type=str, default="example_csv.csv",
         )
 
     def handle(self, *args, **options):
-        number = options.get("number")
-        seeder = Seed.seeder()
+        file_path = options["file_path"]
+        with open(file_path, "r", encoding='utf-8') as csv_file:
+            data = list(csv.reader(csv_file, delimiter=","))
 
-        all_users = user_models.User.objects.all()
+        all_users = users_models.User.objects.all()
         store_types = stores_models.StoreType.objects.all()
         food_types = stores_models.FoodType.objects.all()
         menus = stores_models.Menu.objects.all()
+        print((lambda x: random.choice(all_users)))
 
-        seeder.add_entity(
-            stores_models.Store,
-            number,
-            {
-                "name": lambda x: seeder.faker.address(),
-                "host": lambda x: random.choice(all_users),
-                "store_type": lambda x: random.choice(store_types),
-                "food_type": lambda x: random.choice(food_types),
-                "menu": lambda x: random.choice(menus),
-            },
-        )
-        created_photos = seeder.execute()
-        created_clean = flatten(list(created_photos.values()))
+        for row in data[1:30]:
+            stores_models.Store.objects.create(
+                name=row[0],
+                address=row[1],
+                phone_number=row[2],
+                store_type=random.choice(store_types),
+                food_type=random.choice(food_types),
+                menu=random.choice(menus),
+                user=random.choice(all_users),
+            )
+        store_list = stores_models.Store.objects.all()
         amenities = stores_models.Amenity.objects.all()
         themes = stores_models.Theme.objects.all()
         tastes = stores_models.Taste.objects.all()
-        for pk in created_clean:
-            store = stores_models.Store.objects.get(pk=pk)
+        for store in store_list:
             for i in range(3, random.randint(10, 30)):
-                stores_models.Photo.objects.create(
+                stores_models.Image.objects.create(
                     store=store,
                     file=f"stores_photos/{random.randint(1, 31)}.webp",
                 )
@@ -60,4 +61,4 @@ class Command(BaseCommand):
                 if magic_number % 2 == 0:
                     store.tastes.add(t)
 
-        self.stdout.write(self.style.SUCCESS(f"{number} rooms created!"))
+        self.stdout.write(self.style.SUCCESS(f"가게 생성"))

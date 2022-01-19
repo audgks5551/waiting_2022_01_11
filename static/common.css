@@ -595,22 +595,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 0.5rem;
 }
 
-.t-mr-\[0\.5rem\] {
-  margin-right: 0.5rem;
-}
-
-.t-mb-\[0\.2rem\] {
-  margin-bottom: 0.2rem;
-}
-
-.t-mr-\[0\.3rem\] {
-  margin-right: 0.3rem;
-}
-
-.t-mr-\[0\.2rem\] {
-  margin-right: 0.2rem;
-}
-
 .t-block {
   display: block;
 }
@@ -673,18 +657,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-\[98\%\] {
   width: 98%;
-}
-
-.t-w-\[2rem\] {
-  width: 2rem;
-}
-
-.t-w-\[3rem\] {
-  width: 3rem;
-}
-
-.t-w-\[1rem\] {
-  width: 1rem;
 }
 
 .t-max-w-full {
@@ -838,21 +810,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
-}
-
-.t-bg-\[\#A68DAD\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(166 141 173 / var(--tw-bg-opacity));
-}
-
-.t-bg-\[\#F9CF93\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 207 147 / var(--tw-bg-opacity));
-}
-
-.t-bg-\[\#F9E4C8\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 228 200 / var(--tw-bg-opacity));
 }
 
 .t-object-cover {
@@ -1012,9 +969,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @font-face {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
 
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
 }
 
 html > body {
@@ -1142,7 +1100,10 @@ select {
   margin-bottom: 0.5rem;
 }
 
-#id_amenities {
+#id_amenities,
+#id_menu,
+#id_tastes,
+#id_themes {
   border-width: 1px;
   padding: 1.25rem;
 }
