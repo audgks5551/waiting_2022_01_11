@@ -788,14 +788,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
-.t-bg-blue-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
-}
-
 .t-bg-gray-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.t-bg-blue-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
 .t-object-cover {
@@ -815,16 +815,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 2rem;
 }
 
+.t-p-\[0\.3rem\] {
+  padding: 0.3rem;
+}
+
 .t-p-\[0\.2rem\] {
   padding: 0.2rem;
 }
 
 .t-p-\[1rem\] {
   padding: 1rem;
-}
-
-.t-p-\[0\.3rem\] {
-  padding: 0.3rem;
 }
 
 .t-px-\[0\.5rem\] {
@@ -870,10 +870,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-px-\[1\.7rem\] {
   padding-left: 1.7rem;
   padding-right: 1.7rem;
-}
-
-.t-pb-\[0\.3rem\] {
-  padding-bottom: 0.3rem;
 }
 
 .t-text-center {
@@ -922,11 +918,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.t-text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .t-no-underline {

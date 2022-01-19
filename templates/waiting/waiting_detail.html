@@ -18,11 +18,26 @@ start
         </div>
         <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
             {% if waiting_list %}
-                {% for waiting in waiting_list %}
-                    <span class="t-border-b t-border-gray-350 t-py-4">
-                        <span class="t-ml-[1rem]">{{ waiting.user.first_name }}</span>
-                    </span>
-                {% endfor %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">대기번호</th>
+                            <th scope="col">인원수</th>
+                            <th scope="col">수정</th>
+                            <th scope="col">삭제</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for waiting in waiting_list %}
+                            <tr>
+                                <td scope="row">{{ waiting.number }}</th>
+                                <td>{{ waiting.people_number }}</td>
+                                <td><button>수정</button></td>
+                                <td><button>삭제</button></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             {% else %}
                 <span class="t-border-b t-border-gray-350 t-py-4">
                     <span class="t-ml-[1rem]">아직 대기가 없습니다</span>
