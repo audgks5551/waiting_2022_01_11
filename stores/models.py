@@ -59,7 +59,7 @@ class Store(models.Model):
 
     name    = models.CharField("가게 이름", max_length=30)
     qrcode  = models.ImageField(blank=True, upload_to="stores/qrcode/")
-    user    = models.ForeignKey(User, on_delete=models.CASCADE)
+    user    = models.ForeignKey(User, related_name="stores", on_delete=models.CASCADE)
     address = models.CharField("가게 주소",max_length=140, default="")
     store_type = models.ForeignKey(
         "StoreType", related_name="stores", on_delete=models.SET_NULL, null=True

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+list
+{% endblock page_title %}
+
+{% block content %}
+    <div class="t-container t-mx-auto">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[30%] t-mb-[1rem] t-rounded">
+            <div class="t-border-b t-py-4">
+                <span class="t-ml-[1rem] t-text-[1.2rem]">가게 관리하기</span>
+            </div>
+        </div>
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[30%] t-mb-[1rem] t-rounded">
+            {% if myStore_list %}
+                {% for myStore in myStore_list %}
+                    <div class="t-flex t-justify-between t-border-b t-border-gray-350 t-py-4">
+                        <div class="t-flex t-justify-center t-items-center">
+                            <span class="t-ml-[1rem]">{{ myStore.name }}</span>
+                        </div>
+                        <div class="t-mr-[1rem]">
+                            <a href="{% url "stores:modify" myStore.id %}" class="t-p-2 t-mr-2 btn btn-warning">수정</a>
+                            <a href="{% url "stores:delete" myStore.id %}" class="t-p-2 t-mr-2 btn btn-danger">삭제</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+    </div>
+    
+
+{% endblock content %}
+
+{% block nav-b %}
+    
+    {% include "partials/nav-b.html" with home="home" person="person" %}
+{% endblock nav-b %}

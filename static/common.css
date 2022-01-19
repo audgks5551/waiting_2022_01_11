@@ -607,6 +607,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 2rem;
 }
 
+.t-mr-2 {
+  margin-right: 0.5rem;
+}
+
 .t-block {
   display: block;
 }
@@ -825,6 +829,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
+.t-bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.t-bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.t-bg-gray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
 .t-object-cover {
@@ -1242,6 +1261,16 @@ select {
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
+.hover\:t-bg-red-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
+.hover\:t-bg-gray-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
 .hover\:t-text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -1305,6 +1334,21 @@ select {
     margin-right: 10%;
   }
 
+  .lg\:t-mx-\[20\%\] {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .lg\:t-mx-\[200\%\] {
+    margin-left: 200%;
+    margin-right: 200%;
+  }
+
+  .lg\:t-mx-\[30\%\] {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
   .lg\:t-ml-\[1rem\] {
     margin-left: 1rem;
   }
@@ -1327,6 +1371,10 @@ select {
 
   .lg\:t-w-\[50\%\] {
     width: 50%;
+  }
+
+  .lg\:t-w-\[30\%\] {
+    width: 30%;
   }
 
   .lg\:t-grid-cols-4 {
@@ -1372,6 +1420,18 @@ select {
 @media (min-width: 1280px) {
   .xl\:t-w-\[35\%\] {
     width: 35%;
+  }
+
+  .xl\:t-w-\[20\%\] {
+    width: 20%;
+  }
+
+  .xl\:t-w-\[40\%\] {
+    width: 40%;
+  }
+
+  .xl\:t-w-\[45\%\] {
+    width: 45%;
   }
 
   .xl\:t-px-\[12\.5rem\] {

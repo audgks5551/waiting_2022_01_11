@@ -11,6 +11,7 @@ from django.contrib import messages
 
 #
 from . import forms, models, mixins 
+from stores import models as stores_models
 import requests
 
 class LoginView(mixins.LoggedOutOnlyView, FormView):
@@ -203,7 +204,7 @@ def kakao_collback(request: HttpRequest):
 
 
 @login_required
-def showMyPage(request, user_id):
+def showMyPage(request):
     
     """ Show My Page """
 
@@ -211,3 +212,16 @@ def showMyPage(request, user_id):
     
     context = {"current_user_id": current_user_id}
     return render(request, "users/users_mypage.html", context)
+
+@login_required
+def myStoreList(request):
+    
+    current_user_id = request.user.id
+
+    myStore_list = stores_models.Store.objects.filter(user_id=current_user_id)
+
+    context = {
+        "current_user_id": current_user_id,
+        "myStore_list": myStore_list,
+    }
+    return render(request, "users/users_store_list.html", context)

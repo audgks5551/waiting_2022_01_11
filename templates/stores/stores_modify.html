@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+modify
+{% endblock page_title %}
+
+{% block content %}
+    <div class="t-container t-mx-auto t-flex t-flex-col t-justify-center t-items-center t-border t-w-[95%] lg:t-w-[50%] xl:t-w-[35%] t-p-[2rem] t-flex-1">
+        
+        <div class="t-mb-[1.5rem] t-text-[1.5rem]">
+            <span>가게 수정하기</span>
+        </div>
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <span class="text-red-500 font-medium text-sm">{{error}}</span> 
+            {% endfor %}
+        {% endif %}
+
+        <div class="t-w-full">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <div>{{ store_form }}</div>
+                </div>
+                <div>
+                    <div>{{ startWaiting_form }}</div>
+                </div>
+                <div class="t-mt-[1rem]">
+                    <div>이미지를 클릭하면 자세히 볼 수 있습니다</div>
+                    {% if photo_list %}
+                        {% for photo in photo_list %}
+                            <div class="t-border t-p-2 t-flex t-justify-between t-items-center">
+                                <a class="btn btn-secondary" href="{{ photo.file.url }}"> 가게 이미지 {{ forloop.counter }}</a>
+                                <a href="{% url "stores:photo_delete" store.id photo.id %}" class="btn btn-danger">삭제</a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="t-mt-[1rem]">
+                    <div><span>이미지 추가 업로드:</span></div>
+                    <div>{{ add_photo_form }}</div>
+                </div>
+
+                <button class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-red-700 hover:t-bg-red-800 t-text-white">수정</button>
+                <div class="t-flex">
+                    <a href="{% url "users:my_list" %}" class="t-w-full t-font-medium t-mb-2 t-text-center t-rounded-sm t-py-5 t-bg-gray-700 hover:t-bg-gray-800 t-text-white hover:t-text-white">취소</a> 
+                </div>
+            </form>    
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block nav-b %}
+    
+    
+    {% include "partials/nav-b.html" with home="home" person="person" %}
+{% endblock nav-b %}

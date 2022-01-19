@@ -19,7 +19,7 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url "users:mypage" current_user_id %}">마이페이지</a>
+            <a class="nav-link active" aria-current="page" href="{% url "users:mypage" %}">마이페이지</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url "users:logout" %}">로그아웃</a>

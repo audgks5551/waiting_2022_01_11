@@ -15,7 +15,7 @@
                 class="t-h-full t-flex t-items-center t-px-[2rem]"
                 href="
                     {% if user.is_authenticated %}
-                        {% url "users:mypage" current_user_id %}
+                        {% url "users:mypage" %}
                     {% else %}
                         {% url "users:login" %}
                     {% endif %}

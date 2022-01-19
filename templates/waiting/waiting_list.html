@@ -6,12 +6,12 @@ start
 
 {% block content %}
     <div class="t-container t-mx-auto">
-        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-mb-[1rem] t-rounded">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[30%] t-mb-[1rem] t-rounded">
             <div class="t-border-b t-py-4">
                 <span class="t-ml-[1rem] t-text-[1.2rem]">기달을 시작할 스토어를 눌러주세요</span>
             </div>
         </div>
-        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[10%] t-rounded">
+        <div class="t-flex t-flex-col t-border t-border-gray-400 t-mx-[2%] lg:t-mx-[30%] t-rounded">
             {% if startWaiting_list %}
                 {% for startWaiting in startWaiting_list %}
                     <a href="{% url "waiting:detail" startWaiting.id %}" class="t-border-b t-border-gray-350 t-py-4 hover:t-bg-[#DFD3C3] hover:t-text-black">
