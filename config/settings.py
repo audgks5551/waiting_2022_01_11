@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "waiting.apps.WaitingConfig",
 
     # 써드파티
-    "phonenumber_field",
+    "django_seed",
 ]
 
 MIDDLEWARE = [

@@ -12,6 +12,7 @@ django-dotenv = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 Django = "*"
 Pillow = "*"
+django-seed = "*"
 
 [dev-packages]
 

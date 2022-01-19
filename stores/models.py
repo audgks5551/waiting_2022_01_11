@@ -99,8 +99,17 @@ class Store(models.Model):
     food_type = models.ForeignKey(
         "FoodType", related_name="stores", on_delete=models.SET_NULL, null=True
     )
+    menu = models.ForeignKey(
+        "Menu", related_name="stores", on_delete=models.SET_NULL, null=True
+    )
     amenities = models.ManyToManyField(
         "Amenity", related_name="stores", blank=True
+    )
+    themes = models.ManyToManyField(
+        "Theme", related_name="stores", blank=True
+    )
+    tastes = models.ManyToManyField(
+        "Taste", related_name="stores", blank=True
     )
     tags = models.CharField("태그", max_length=200, default="")
     objects = managers.CustomModelManager()
