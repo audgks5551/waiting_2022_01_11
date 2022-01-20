@@ -19,6 +19,7 @@ list
                             <span class="t-ml-[1rem]">{{ myStore.name }}</span>
                         </div>
                         <div class="t-mr-[1rem]">
+                            <a href="{% url "stores:detail" myStore.id %}" class="t-p-2 t-mr-2 btn btn-primary">보기</a>
                             <a href="{% url "stores:modify" myStore.id %}" class="t-p-2 t-mr-2 btn btn-warning">수정</a>
                             <a href="{% url "stores:delete" myStore.id %}" class="t-p-2 t-mr-2 btn btn-danger">삭제</a>
                         </div>

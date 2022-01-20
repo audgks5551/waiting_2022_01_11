@@ -6,10 +6,10 @@ detail
 {% endblock page_title %}
 
 {% block content %}
-<div class="t-container t-mx-auto">
-    <div class="t-grid t-grid-cols-1 lg:t-grid-cols-2">
+<div class="t-container t-mx-auto lg:t-w-[50%] xl:t-w-[30%]">
+    <div class="t-grid t-grid-cols-1 t-mx-[0.5rem] lg:t-mx-0 ">
         {% if store.get_images %}
-            <div id="myCarousel" class="carousel slide t--mt-[1.35rem] t-block t-w-full t-object-cover" style="aspect-ratio: 1.5 / 1;" data-bs-ride="carousel">
+            <div id="myCarousel" class="carousel slide t--mt-[1rem] t-block t-w-full t-object-cover" style="aspect-ratio: 1.5 / 1;" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     {% for image in store.get_images %}
@@ -39,7 +39,48 @@ detail
             <div class="t-w-[35rem] t-h-[35rem] t-bg-gray-400 t-rounded"></div>
         {% endif %}
 
-        <div class="t-flex t-flex-col t-border t-border-gray-400 t-rounded t--mt-[1.35rem]">
+        <div class="t-flex t-flex-col t-border t-border-gray-300 t-rounded t-mt-[1rem] t-p-2">
+            <div class="t-py-4 t-text-[1.5rem] t-border-b">{{ store.name }}</div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">주소</span>
+                <span class="t-pr-[1rem]">{{ store.address }}</span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">전화번호</span>
+                <span class="t-pr-[1rem]">{{ store.phone_number }}</span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">가게유형</span>
+                <span class="t-pr-[1rem]">{{ store.store_type }}</span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">가게유형 상세</span>
+                <span class="t-pr-[1rem]">{{ store.food_type }}</span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">대표음식</span>
+                <span class="t-pr-[1rem]">{{ store.menu }}</span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">편의성</span>
+                <span class="t-pr-[1rem]">
+                        {% for amenity in store.amenities.all %}
+                        <span>{{ amenity.name }}, </span>
+                        {% endfor %}    
+                </span>
+            </div>
+            
+            <div class="t-py-4">
+                {% for theme in store.themes.all %}
+                <span>{{ theme.name }}, </span>
+                {% endfor %}    
+            </div>
+            <div class="t-py-4">
+                {% for taste in store.tastes.all %}
+                <span>{{ taste.name }}, </span>
+                {% endfor %}    
+            </div>
+            <div>{{ store.tags }}</div>
             <div class="t-py-4 t-text-center">
                 <div class="t-flex t-justify-center">
                     <div class="t-p-[0.3rem] t-text-[1.5rem] lg:t-text-[2.5rem] t-font-bold">

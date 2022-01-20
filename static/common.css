@@ -543,6 +543,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 2%;
 }
 
+.t-mx-\[0\.3rem\] {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+.t-mx-\[1rem\] {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.t-mx-\[0\.5rem\] {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .t-mt-\[5rem\] {
   margin-top: 5rem;
 }
@@ -595,6 +610,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 0.5rem;
 }
 
+.t-mt-\[0\.3rem\] {
+  margin-top: 0.3rem;
+}
+
+.t--mt-\[1rem\] {
+  margin-top: -1rem;
+}
+
 .t-block {
   display: block;
 }
@@ -643,6 +666,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 95%;
 }
 
+.t-w-\[50\%\] {
+  width: 50%;
+}
+
 .t-w-\[35rem\] {
   width: 35rem;
 }
@@ -657,6 +684,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-\[98\%\] {
   width: 98%;
+}
+
+.t-w-\[30\%\] {
+  width: 30%;
 }
 
 .t-max-w-full {
@@ -894,6 +925,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 2rem;
 }
 
+.t-pr-\[1rem\] {
+  padding-right: 1rem;
+}
+
 .t-text-center {
   text-align: center;
 }
@@ -944,6 +979,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.t-text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .t-no-underline {
@@ -1292,6 +1332,11 @@ select {
     margin-right: 10%;
   }
 
+  .lg\:t-mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   .lg\:t-ml-\[1rem\] {
     margin-left: 1rem;
   }
@@ -1316,12 +1361,12 @@ select {
     width: 50%;
   }
 
-  .lg\:t-grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .lg\:t-w-\[30\%\] {
+    width: 30%;
   }
 
-  .lg\:t-grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .lg\:t-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:t-justify-end {
@@ -1359,6 +1404,10 @@ select {
 
   .xl\:t-w-\[45\%\] {
     width: 45%;
+  }
+
+  .xl\:t-w-\[30\%\] {
+    width: 30%;
   }
 
   .xl\:t-px-\[12\.5rem\] {
