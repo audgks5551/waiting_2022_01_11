@@ -69,18 +69,27 @@ detail
                         {% endfor %}    
                 </span>
             </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">맛</span>
+                <span class="t-pr-[1rem]">
+                    {% for taste in store.tastes.all %}
+                    <span>{{ taste.name }}, </span>
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">특징</span>
+                <span class="t-pr-[1rem]">
+                    {% for theme in store.themes.all %}
+                    <span>{{ theme.name }}, </span>
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="t-py-4 t-border-b t-flex t-justify-between">
+                <span class="t-text-gray-400 t-whitespace-nowrap t-pr-[1rem]">태그</span>
+                <span class="t-pr-[1rem]">{{ store.tags }}</span>
+            </div>
             
-            <div class="t-py-4">
-                {% for theme in store.themes.all %}
-                <span>{{ theme.name }}, </span>
-                {% endfor %}    
-            </div>
-            <div class="t-py-4">
-                {% for taste in store.tastes.all %}
-                <span>{{ taste.name }}, </span>
-                {% endfor %}    
-            </div>
-            <div>{{ store.tags }}</div>
             <div class="t-py-4 t-text-center">
                 <div class="t-flex t-justify-center">
                     <div class="t-p-[0.3rem] t-text-[1.5rem] lg:t-text-[2.5rem] t-font-bold">

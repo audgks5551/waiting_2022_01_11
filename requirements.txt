@@ -7,3 +7,5 @@ django_bootstrap5
 django-dotenv
 django-seed
 psycopg2-binary
+geopy
+osmnx

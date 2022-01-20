@@ -14,6 +14,8 @@ Django = "*"
 Pillow = "*"
 django-seed = "*"
 psycopg2-binary = "*"
+geopy = "*"
+osmnx = "*"
 
 [dev-packages]
 
