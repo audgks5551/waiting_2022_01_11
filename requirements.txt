@@ -8,4 +8,3 @@ django-dotenv
 django-seed
 psycopg2-binary
 geopy
-osmnx

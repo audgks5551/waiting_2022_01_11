@@ -4,7 +4,6 @@ from django.shortcuts import render
 from stores import models as stores_models
 
 from geopy.geocoders import Nominatim
-import osmnx as ox
 
 
 def geocoding(address):
