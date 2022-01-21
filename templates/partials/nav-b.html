@@ -1,13 +1,29 @@
-<div class="t-container t-max-w-full t-flex lg:t-hidden t-z-10 t-bottom-0 t-left-0 t-right-0 t-fixed t-bg-[#F0ECE3] t-h-[3rem] t-border-t">
+<div class="t-container t-max-w-full t-flex lg:t-hidden t-z-10 t-bottom-0 t-left-0 t-right-0 t-fixed t-bg-[#DD6B4D] t-h-[3rem]">
     <ul class="t-flex t-items-center t-w-full t-justify-between">
         <li class="t-flex t-items-center" >
             <a class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" href="{% url "core:home" %}">
-                <img src="/media/nav-b/{{ home }}.svg" />
+                {% if home %}
+                <svg class="t-fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill-rule="evenodd"
+                        d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z">
+                    </path>
+                </svg>
+                {% else %}
+                <svg class="t-fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path
+                        d="M12.97 2.59a1.5 1.5 0 00-1.94 0l-7.5 6.363A1.5 1.5 0 003 10.097V19.5A1.5 1.5 0 004.5 21h4.75a.75.75 0 00.75-.75V14h4v6.25c0 .414.336.75.75.75h4.75a1.5 1.5 0 001.5-1.5v-9.403a1.5 1.5 0 00-.53-1.144l-7.5-6.363z">
+                    </path>
+                </svg>
+                {% endif %}
             </a>
         </li>
         <li class="t-flex t-items-center" >
             <button class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
+                <svg class="t-fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill-rule="evenodd"
+                        d="M14.53 15.59a8.25 8.25 0 111.06-1.06l5.69 5.69a.75.75 0 11-1.06 1.06l-5.69-5.69zM2.5 9.25a6.75 6.75 0 1111.74 4.547.746.746 0 00-.443.442A6.75 6.75 0 012.5 9.25z">
+                    </path>
+                </svg>
             </button>
         </li>
         <li class="t-flex t-items-center">
@@ -20,7 +36,19 @@
                         {% url "users:login" %}
                     {% endif %}
                 ">
-                <img src="/media/nav-b/{{ person }}.svg" />
+                {% if person %}
+                <svg class="t-fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill-rule="evenodd"
+                        d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z">
+                    </path>
+                </svg>
+                {% else %}
+                <svg class="t-fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path
+                        d="M12 2.5a5.25 5.25 0 00-2.519 9.857 9.005 9.005 0 00-6.477 8.37.75.75 0 00.727.773H20.27a.75.75 0 00.727-.772 9.005 9.005 0 00-6.477-8.37A5.25 5.25 0 0012 2.5z">
+                    </path>
+                </svg>
+                {% endif %}
             </a>
         </li>
     </ul>
@@ -42,8 +70,8 @@
             <div class="t-border-b t-p-[1rem]">
                 <form method="GET" action="{% url "stores:list" %}">
                     <div class="t-flex">
-                        <input class="t-mb-0 t-h-[3rem]" type="text" placeholder="지역, 맛, 음식"/>
-                        <button class="t-whitespace-nowrap btn btn-light t-ml-[0.3rem]" >
+                        <input class="t-mb-0 t-h-[3rem] t-border-2 t-border-[#1C4B82]" type="text" placeholder="지역, 맛, 음식"/>
+                        <button class="t-whitespace-nowrap btn btn-light t-ml-[0.3rem] t-border-2 t-border-[#1C4B82]" >
                             <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
                         </button>
                     </div>

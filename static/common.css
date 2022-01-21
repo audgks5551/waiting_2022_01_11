@@ -569,12 +569,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 1rem;
 }
 
-.t-mb-\[0\.5rem\] {
-  margin-bottom: 0.5rem;
+.t--mt-\[0\.5rem\] {
+  margin-top: -0.5rem;
 }
 
-.t--mt-\[1rem\] {
-  margin-top: -1rem;
+.t-mb-\[1rem\] {
+  margin-bottom: 1rem;
+}
+
+.t-mr-\[0\.5rem\] {
+  margin-right: 0.5rem;
 }
 
 .t-mt-\[2rem\] {
@@ -601,6 +605,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.5rem;
 }
 
+.t-mr-0 {
+  margin-right: 0px;
+}
+
 .t-mt-\[1rem\] {
   margin-top: 1rem;
 }
@@ -609,12 +617,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.5rem;
 }
 
-.t-mr-\[1rem\] {
-  margin-right: 1rem;
+.t--mt-\[1rem\] {
+  margin-top: -1rem;
 }
 
-.t-mb-\[1rem\] {
-  margin-bottom: 1rem;
+.t-mb-\[0\.5rem\] {
+  margin-bottom: 0.5rem;
+}
+
+.t-mr-\[1rem\] {
+  margin-right: 1rem;
 }
 
 .t-block {
@@ -661,12 +673,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: auto;
 }
 
-.t-w-\[1\.5rem\] {
-  width: 1.5rem;
-}
-
 .t-w-\[1\.4rem\] {
   width: 1.4rem;
+}
+
+.t-w-\[1\.5rem\] {
+  width: 1.5rem;
 }
 
 .t-w-\[18rem\] {
@@ -769,6 +781,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 1px;
 }
 
+.t-border-2 {
+  border-width: 2px;
+}
+
+.t-border-\[0\.001rem\] {
+  border-width: 0.001rem;
+}
+
+.t-border-0 {
+  border-width: 0px;
+}
+
 .t-border-\[0\.126rem\] {
   border-width: 0.126rem;
 }
@@ -786,6 +810,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
+.t-border-\[\#1C4B82\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(28 75 130 / var(--tw-border-opacity));
+}
+
+.t-border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .t-border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
@@ -801,14 +835,29 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
+.t-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .t-bg-\[\#F0ECE3\] {
   --tw-bg-opacity: 1;
   background-color: rgb(240 236 227 / var(--tw-bg-opacity));
 }
 
+.t-bg-\[\#DD6B4D\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(221 107 77 / var(--tw-bg-opacity));
+}
+
 .t-bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.t-bg-\[\#1C4B82\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 75 130 / var(--tw-bg-opacity));
 }
 
 .t-bg-gray-400 {
@@ -849,6 +898,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
+.t-fill-white {
+  fill: #fff;
 }
 
 .t-object-cover {
@@ -923,6 +976,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1rem;
 }
 
+.t-py-\[0\.3rem\] {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.t-py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .t-py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -955,12 +1018,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-align: center;
 }
 
-.t-text-\[15px\] {
-  font-size: 15px;
+.t-text-\[16px\] {
+  font-size: 16px;
 }
 
 .t-text-\[1\.2rem\] {
   font-size: 1.2rem;
+}
+
+.t-text-\[1\.5rem\] {
+  font-size: 1.5rem;
 }
 
 .t-text-sm {
@@ -968,12 +1035,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
-.t-text-\[1rem\] {
-  font-size: 1rem;
+.t-text-\[2rem\] {
+  font-size: 2rem;
 }
 
-.t-text-\[1\.5rem\] {
-  font-size: 1.5rem;
+.t-text-\[1rem\] {
+  font-size: 1rem;
 }
 
 .t-text-\[1\.3rem\] {
@@ -1007,14 +1074,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
-.t-text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
 .t-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.t-text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
 .t-shadow-md {
@@ -1034,15 +1101,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 150ms;
 }
 
-@font-face {
-  font-family: "GmarketSansMedium";
+/* 칠백삼체 유서연 */
 
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+@font-face {
+  font-family: "establishRoomNo703OTF";
+
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRoomNo703OTF.woff")
     format("woff");
 }
 
 html > body {
-  font-family: "GmarketSansMedium";
+  font-family: "establishRoomNo703OTF";
   text-underline-position: under;
 }
 
@@ -1174,8 +1243,9 @@ select {
   padding: 1.25rem;
 }
 
-label[for='btncheck1'].active {
-  background-color: #FF7F3F;
+label[for="btncheck1"].active {
+  background-color: #1c4b82;
+  color: white;
 }
 
 .before\:t-absolute::before {
@@ -1272,6 +1342,11 @@ label[for='btncheck1'].active {
 .after\:t-content-\[attr\(data-before\)\]::after {
   --tw-content: attr(data-before);
   content: var(--tw-content);
+}
+
+.hover\:t-bg-\[\#DD6B4D\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(221 107 77 / var(--tw-bg-opacity));
 }
 
 .hover\:t-bg-gray-400:hover {

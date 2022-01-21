@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 칠백삼체 유서연 */
 @font-face {
-  font-family: "GmarketSansMedium";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+  font-family: "establishRoomNo703OTF";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRoomNo703OTF.woff")
     format("woff");
 }
 
 html > body {
-  font-family: "GmarketSansMedium";
+  font-family: "establishRoomNo703OTF";
   text-underline-position: under;
 }
 
@@ -89,6 +90,7 @@ select {
   padding: 1.25rem;
 }
 
-label[for='btncheck1'].active {
-  background-color: #FF7F3F;
+label[for="btncheck1"].active {
+  background-color: #1c4b82;
+  color: white;
 }
