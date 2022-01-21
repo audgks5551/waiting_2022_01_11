@@ -12,8 +12,8 @@
             <a class="t-mt-2 hover:t-text-black t-text-[1.2rem]" href="{% url "stores:detail" store.id %}">{{store.name}}</a>
         </div>
         <div class="t-text-gray-400">
-            <a class="t-mt-2 hover:t-text-gray-400" href="{% url "stores:detail" store.id %}">{{store.store_type}}</a>
-            <span>-</span>
+            <a class="t-hidden t-mt-2 hover:t-text-gray-400" href="{% url "stores:detail" store.id %}">{{store.store_type}}</a>
+            <span class="t-hidden">-</span>
             <a class="t-mt-2 hover:t-text-gray-400" href="{% url "stores:detail" store.id %}">{{store.food_type}}</a>
             <span>-</span>
             <a class="t-mt-2 hover:t-text-gray-400" href="{% url "stores:detail" store.id %}">{{store.menu}}</a>

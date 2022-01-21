@@ -88,3 +88,7 @@ select {
   border-width: 1px;
   padding: 1.25rem;
 }
+
+label[for='btncheck1'].active {
+  background-color: #FF7F3F;
+}

@@ -6,9 +6,9 @@
             </a>
         </li>
         <li class="t-flex t-items-center" >
-            <a class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" href="{% url "stores:list" %}">
+            <button class="t-h-full t-flex t-items-center t-justify-center t-px-[2rem]" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
-            </a>
+            </button>
         </li>
         <li class="t-flex t-items-center">
             <a 
@@ -25,4 +25,62 @@
         </li>
     </ul>
 </div>
+
+<!-- Button trigger modal -->
+    
+    
+    <!-- Modal -->
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header t-p-2">
+                <button  data-bs-dismiss="modal" aria-label="Close">
+                    <img class="t-w-[1.4rem]" src="/media/nav-b/x.svg" />
+                </button>    
+          </div>
+          <div class="modal-body t-p-0">
+            <div class="t-border-b t-p-[1rem]">
+                <form method="GET" action="{% url "stores:list" %}">
+                    <div class="t-flex">
+                        <input class="t-mb-0 t-h-[3rem]" type="text" placeholder="지역, 맛, 음식"/>
+                        <button class="t-whitespace-nowrap btn btn-light t-ml-[0.3rem]" >
+                            <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="t-flex t-border-b t-p-[1rem]">
+                <div class="">
+                    <label for="btncheck1" class="t-inline-block t-bg-gray-200 t-rounded-full t-px-3 t-py-1 t-text-sm t-font-semibold t-text-gray-700 t-mr-2 t-mb-2">한식</label>
+                    <input id="btncheck1" class="t-inline-block t-hidden" type="checkbox" autocomplete="off">
+                </div>
+                <div class="">
+                    <label for="btncheck2" class="t-inline-block t-bg-gray-200 t-rounded-full t-px-3 t-py-1 t-text-sm t-font-semibold t-text-gray-700 t-mr-2 t-mb-2">중식</label>
+                    <input id="btncheck2" class="t-inline-block t-hidden" type="checkbox" autocomplete="off">
+                </div>
+                <div class="">
+                    <label for="btncheck3" class="t-inline-block t-bg-gray-200 t-rounded-full t-px-3 t-py-1 t-text-sm t-font-semibold t-text-gray-700 t-mr-2 t-mb-2">일식</label>
+                    <input id="btncheck3" class="t-inline-block t-hidden" type="checkbox" autocomplete="off">
+                </div>
+            </div>
+            
+            
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script> 
+	$(document).ready(function() {
+		 $(`input[id='btncheck1']`).click( function() {
+			 if ( $(`input[id='btncheck1']`).prop('checked') ) { 
+				$(`label[for='btncheck1']`).addClass("active"); 
+			} else { 
+				$(`label[for='btncheck1']`).removeClass("active"); 
+			} 
+		}); 
+	}); 
+</script>
     
