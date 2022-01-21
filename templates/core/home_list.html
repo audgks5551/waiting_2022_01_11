@@ -19,7 +19,7 @@ list
             </div>
         </div>
 
-        <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
+        <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 lg:t-gap-[2rem] lg:t-px-[0.5rem]">
             {% for store in store_list %}
                 {% include "core/home_card.html" with store=store %}
             {% endfor %}

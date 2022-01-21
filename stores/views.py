@@ -106,7 +106,7 @@ def modifyStore(request, store_id):
 
 
 def createQRcode(store):
-    url = f"http://127.0.0.1:8000/stores/{store.id}"
+    url = f"http://192.168.0.5:8000/stores/{store.id}/detail/"
     qrcode_img = qrcode.make(url)
     canvas = Image.new("RGB", (500, 500), "white")
     draw = ImageDraw.Draw(canvas)
