@@ -633,10 +633,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: block;
 }
 
-.t-inline-block {
-  display: inline-block;
-}
-
 .t-flex {
   display: flex;
 }
@@ -729,6 +725,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: center;
 }
 
+.t-justify-end {
+  justify-content: flex-end;
+}
+
 .t-justify-center {
   justify-content: center;
 }
@@ -743,26 +743,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-gap-\[0\.7rem\] {
   gap: 0.7rem;
-}
-
-.t-gap-\[0\.4rem\] {
-  gap: 0.4rem;
-}
-
-.t-gap-\[0\.2rem\] {
-  gap: 0.2rem;
-}
-
-.t-gap-\[0\.1rem\] {
-  gap: 0.1rem;
-}
-
-.t-gap-\[0\.\.1rem\] {
-  gap: 0..1rem;
-}
-
-.t-gap-\[0\.01rem\] {
-  gap: 0.01rem;
 }
 
 .t-overflow-hidden {
@@ -928,12 +908,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1.5rem;
 }
 
-.t-p-2 {
-  padding: 0.5rem;
-}
-
 .t-p-0 {
   padding: 0px;
+}
+
+.t-p-2 {
+  padding: 0.5rem;
 }
 
 .t-p-\[1rem\] {
@@ -976,6 +956,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 2rem;
 }
 
+.t-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.t-px-\[1\.5rem\] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.t-px-\[1rem\] {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .t-px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -984,11 +979,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-
-.t-px-\[1rem\] {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .t-py-\[0\.3rem\] {
@@ -1006,11 +996,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 1.25rem;
 }
 
-.t-py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .t-py-\[1\.3rem\] {
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
@@ -1019,6 +1004,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-px-\[1\.7rem\] {
   padding-left: 1.7rem;
   padding-right: 1.7rem;
+}
+
+.t-pb-\[1rem\] {
+  padding-bottom: 1rem;
 }
 
 .t-pr-\[1rem\] {
@@ -1084,14 +1073,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
-.t-text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
 .t-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.t-text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .t-text-gray-600 {
@@ -1250,15 +1239,53 @@ select {
   margin-bottom: 0.5rem;
 }
 
+#id_store_type,
 #id_amenities,
 #id_menu,
 #id_tastes,
 #id_themes {
-  border-width: 1px;
-  padding: 1.25rem;
+  border-bottom-width: 1px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
-label[for="btncheck1"].active {
+#id_store_type > div,
+#id_amenities > div,
+#id_themes > div,
+#id_tastes > div {
+  display: inline;
+}
+
+label[for*="id_store_type_"],
+label[for*="id_amenities_"],
+label[for*="id_themes_"],
+label[for*="id_tastes_"] {
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  border-radius: 9999px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+}
+
+label[for*="id_store_type_"] > input,
+label[for*="id_amenities_"] > input,
+label[for*="id_themes_"] > input,
+label[for*="id_tastes_"] > input {
+  display: none;
+}
+
+label.active {
   background-color: #1c4b82;
   color: white;
 }
@@ -1384,6 +1411,11 @@ label[for="btncheck1"].active {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
+.hover\:t-bg-\[\#1C4B82\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 75 130 / var(--tw-bg-opacity));
+}
+
 .hover\:t-text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1496,10 +1528,6 @@ label[for="btncheck1"].active {
 
   .lg\:t-gap-\[2rem\] {
     gap: 2rem;
-  }
-
-  .lg\:t-gap-\[1rem\] {
-    gap: 1rem;
   }
 
   .lg\:t-px-\[0\.5rem\] {

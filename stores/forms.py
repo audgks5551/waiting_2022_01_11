@@ -12,9 +12,9 @@ class CreateStoreForm(forms.ModelForm):
             "phone_number",
             "store_type",
             "food_type",
+            "menu",
             "themes",
             "tastes",
-            "menu",
             "amenities",
             "tags",
         )
@@ -35,9 +35,9 @@ class CreateStoreForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["name"].label = "가게 이름"
         self.fields["address"].label = "가게 주소"
-        self.fields["store_type"].label = "가게 종류"
-        self.fields["food_type"].label = "가게 상세 종류"
-        self.fields["menu"].label = "음식 종류"
+        self.fields["store_type"].label = "음식 종류"
+        self.fields["food_type"].label = "음식 상세 종류"
+        self.fields["menu"].label = "대표 음식"
         self.fields["amenities"].label = "편의 시설 (여러 개 선택 가능)"
         self.fields["themes"].label = "테마 (여러 개 선택 가능)"
         self.fields["tastes"].label = "맛 (여러 개 선택 가능)"
@@ -59,3 +59,38 @@ class AddPhotoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["file"].label = ""
+
+
+class SearchForm(forms.Form):
+
+    store_type = forms.ModelMultipleChoiceField(
+        required=False, queryset=models.StoreType.objects.all(), widget=forms.CheckboxSelectMultiple,
+    )
+    amenities = forms.ModelMultipleChoiceField(
+        required=False,
+        queryset=models.Amenity.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    themes = forms.ModelMultipleChoiceField(
+        required=False,
+        queryset=models.Theme.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    tastes = forms.ModelMultipleChoiceField(
+        required=False,
+        queryset=models.Taste.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["store_type"].label = "음식"
+        self.fields["store_type"].label_suffix = ""
+        self.fields["amenities"].label = "서비스"
+        self.fields["amenities"].label_suffix = ""
+        self.fields["themes"].label = "테마"
+        self.fields["themes"].label_suffix = ""
+        self.fields["tastes"].label = "맛"
+        self.fields["tastes"].label_suffix = ""

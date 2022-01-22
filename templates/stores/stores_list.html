@@ -5,9 +5,43 @@ list
 {% endblock page_title %}
 
 {% block content %}
+    <script>
+
+        function category__check(number) {
+            console.log(number)
+            if ($(`#id_amenities_${number}`).prop('checked')) {
+                $(`label[for='id_amenities_${number}']`).addClass("active");
+            } else {
+                $(`label[for='id_amenities_${number}']`).removeClass("active");
+            }
+        }
+        function category__init(number) {
+            $(`label[for='id_amenities_${number}']`).click(function () {
+                category__check(number);
+            });
+        }
+        $(document).ready(function () {
+            category__init(0);
+        }); 
+    </script>
+    
     <div class="t-container t-mx-auto">
         <div class="t-ml-[1rem] t-mb-[0.5rem]">
             <h2 class="t-text-[1.2rem]">검색한 맛집</h2>
+        </div>
+        <div class="t-border-b t-p-[1rem]">
+            <form method="GET">
+                <div class="t-flex">
+                    <input class="t-mb-0 t-h-[3rem] t-border-2 t-border-[#1C4B82]" type="text" placeholder="지역, 맛, 음식" />
+                    <button class="t-whitespace-nowrap btn btn-light t-ml-[0.3rem] t-border-2 t-border-[#1C4B82]">
+                        <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
+                    </button>
+                </div>
+                <div>
+                    {{ form }}
+                </div>
+        
+            </form>
         </div>
         
         <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
