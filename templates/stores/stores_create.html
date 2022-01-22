@@ -35,6 +35,28 @@ create
         </div>
 
     </div>
+
+    <script>
+        $(document).ready(function () {
+
+            for (var i = 0; i <= {{ storeType_len }}; i++) {
+            storeType__init(i);
+        }
+
+        for (var i = 0; i <= {{ amenity_len }}; i++) {
+            amenity__init(i);
+        }
+
+        for (var i = 0; i <= {{ theme_len }}; i++) {
+            theme__init(i);
+        }
+
+        for (var i = 0; i <= {{ taste_len }}; i++) {
+            taste__init(i);
+        }
+        });
+
+    </script>
     
 {% endblock content %}
 

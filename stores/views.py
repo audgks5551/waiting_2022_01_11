@@ -151,11 +151,20 @@ def createStore(request):
         startWaiting_form = waiting_forms.StartWaitingForm()
         add_photo_form = forms.AddPhotoForm()
 
+    storeType_len = models.StoreType.objects.count()
+    amenity_len = models.Amenity.objects.count()
+    theme_len = models.Theme.objects.count()
+    taste_len = models.Taste.objects.count()
+
     context = {
         "store_form": store_form,
         "current_user_id": current_user_id,
         "add_photo_form": add_photo_form,
         "startWaiting_form": startWaiting_form,
+        "storeType_len": storeType_len,
+        "amenity_len": amenity_len,
+        "theme_len": theme_len,
+        "taste_len": taste_len,
     }
     return render(request, "stores/stores_create.html", context)
 
