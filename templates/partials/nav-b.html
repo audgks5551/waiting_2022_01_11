@@ -61,7 +61,7 @@
     
         <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content t-border-0">
                     <div class="modal-header t-flex t-flex-col t-p-0">
                         <div class="t-flex t-justify-end t-w-full t-p-2">
                             <button data-bs-dismiss="modal" aria-label="Close">
@@ -70,9 +70,9 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form method="GET" action="{% url "stores:list" %}">
+                        <form method="GET" action="{% url "stores:search" %}">
                             <div class="t-flex t-w-full t-pb-[1rem]">
-                                <input class="t-mb-0 t-h-[3rem] t-border-2 t-border-[#1C4B82]" type="text" placeholder="음식, 서비스, 테마, 맛, 지역" />
+                                <input class="t-mb-0 t-h-[3rem] t-border-2 t-border-[#1C4B82]" type="text" name="keyword" value="" placeholder="음식, 서비스, 테마, 맛, 지역" />
                                 <button class="t-whitespace-nowrap btn btn-light t-ml-[0.3rem] t-border-2 t-border-[#1C4B82]">
                                     <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
                                 </button>

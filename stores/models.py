@@ -84,7 +84,7 @@ class Image(models.Model):
     file = models.ImageField(blank=True, upload_to="stores/images")
 
 
-class Store(models.Model):
+class Store(core_models.TimeStampedModel):
 
     """ 가게 모델 정의 """
 

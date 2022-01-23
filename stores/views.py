@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, reverse
+from django.views.generic import View
+from django.core.paginator import Paginator
 
 # qrcode
 import qrcode
@@ -13,6 +15,65 @@ from . import models
 from . import forms
 from waiting import forms as waiting_forms
 from waiting import models as waiting_models
+
+
+class SearchView(View):
+
+    """ 검색 """
+
+    def get(self, request):
+
+        current_user_id = request.user.id
+
+        keyword = request.GET.get("keyword", "하이")
+        print(keyword)
+
+        if keyword:
+
+            form = forms.SearchForm(request.GET)
+
+            if form.is_valid():
+
+                store_types = form.cleaned_data.get("store_type")
+                amenities = form.cleaned_data.get("amenities")
+                themes = form.cleaned_data.get("themes")
+                tastes = form.cleaned_data.get("tastes")
+
+                filter_args = {}
+
+                # if keyword != "":
+                #    filter_args["keyword"] = keyword
+
+                for store_type in store_types:
+                    filter_args["store_type"] = store_type
+
+                for amenity in amenities:
+                    filter_args["amenities"] = amenity
+
+                for theme in themes:
+                    filter_args["themes"] = theme
+
+                for taste in tastes:
+                    filter_args["tastes"] = taste
+
+                qs = models.Store.objects.filter(
+                    **filter_args).order_by("-created")
+
+                paginator = Paginator(qs, 10, orphans=5)
+
+                page = request.GET.get("page", 1)
+
+                store_list = paginator.get_page(page)
+
+                return render(
+                    request, "stores/stores_list.html", {
+                        "form": form, "store_list": store_list, "current_user_id": current_user_id}
+                )
+
+        else:
+            form = forms.SearchForm()
+
+        return render(request, "stores/stores_list.html", {"form": form, "current_user_id": current_user_id})
 
 
 def listStore(request):
