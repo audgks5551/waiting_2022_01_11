@@ -16,6 +16,7 @@ django-seed = "*"
 psycopg2-binary = "*"
 geopy = "*"
 osmnx = "*"
+elasticsearch = "*"
 
 [dev-packages]
 

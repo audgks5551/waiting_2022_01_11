@@ -15,6 +15,7 @@ from . import models
 from . import forms
 from waiting import forms as waiting_forms
 from waiting import models as waiting_models
+from elasticsearch import Elasticsearch
 
 
 class SearchView(View):
@@ -23,10 +24,14 @@ class SearchView(View):
 
     def get(self, request):
 
+        elasticsearch = Elasticsearch(
+            "http://127.0.0.1:9200", http_auth=('elastic', 'elasticpassword'),)
+        response = elasticsearch.info()
+        print(response)
+
         current_user_id = request.user.id
 
         keyword = request.GET.get("keyword", "하이")
-        print(keyword)
 
         if keyword:
 
