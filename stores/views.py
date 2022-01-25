@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, reverse
@@ -13,9 +14,9 @@ from django.core.files import File
 #
 from . import models
 from . import forms
+from . import search
 from waiting import forms as waiting_forms
 from waiting import models as waiting_models
-from elasticsearch import Elasticsearch
 
 
 class SearchView(View):
@@ -24,14 +25,9 @@ class SearchView(View):
 
     def get(self, request):
 
-        elasticsearch = Elasticsearch(
-            "http://127.0.0.1:9200", http_auth=('elastic', 'elasticpassword'),)
-        response = elasticsearch.info()
-        print(response)
-
         current_user_id = request.user.id
 
-        keyword = request.GET.get("keyword", "하이")
+        keyword = request.GET.get("keyword", "")
 
         if keyword:
 
@@ -44,27 +40,23 @@ class SearchView(View):
                 themes = form.cleaned_data.get("themes")
                 tastes = form.cleaned_data.get("tastes")
 
-                filter_args = {}
-
-                # if keyword != "":
-                #    filter_args["keyword"] = keyword
-
+                store_type_list = []
                 for store_type in store_types:
-                    filter_args["store_type"] = store_type
-
+                    store_type_list.append(store_type.name)
+                amenity_list = []
                 for amenity in amenities:
-                    filter_args["amenities"] = amenity
-
+                    amenity_list.append(amenity.name)
+                theme_list = []
                 for theme in themes:
-                    filter_args["themes"] = theme
-
+                    theme_list.append(theme.name)
+                taste_list = []
                 for taste in tastes:
-                    filter_args["tastes"] = taste
+                    taste_list.append(taste.name)
 
-                qs = models.Store.objects.filter(
-                    **filter_args).order_by("-created")
+                queryset = search.elasticsearch_search(
+                    keyword, store_type_list, amenity_list, theme_list, taste_list)
 
-                paginator = Paginator(qs, 10, orphans=5)
+                paginator = Paginator(queryset, 10, orphans=5)
 
                 page = request.GET.get("page", 1)
 
