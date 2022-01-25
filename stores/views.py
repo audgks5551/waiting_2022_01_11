@@ -148,7 +148,7 @@ def modifyStore(request, store_id):
         store_form = forms.CreateStoreForm()
         startWaiting_form = waiting_forms.StartWaitingForm()
         add_photo_form = forms.AddPhotoForm()
-    print(store_form)
+
     store_form = forms.CreateStoreForm(instance=store)
     startWaiting_form = waiting_forms.StartWaitingForm(instance=startWaiting)
     add_photo_form = forms.AddPhotoForm()

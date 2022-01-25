@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6569d8c23b3a5d592a8ae3da4ef2d82e96a6e305c0a262f39a1ec1091da09e70"
+            "sha256": "17bd11cb3ef82400b5ccbced0ead0812c95174e109a25604aa43b7478efd3850"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -196,6 +196,15 @@
             ],
             "markers": "python_version >= '3'",
             "version": "==3.3"
+        },
+        "jamo": {
+            "hashes": [
+                "sha256:5aab84c642b453972514e5b95054cf6104fef8f74caa2812993fd846e2141f44",
+                "sha256:d4b94fd23324c606ed2fbc4037c603e2c3a7ae9390c05d3473aea1ccb6b1c3fb",
+                "sha256:ea65cf9d35338d0e0af48d75ff426d8a369b0ebde6f07051c3ac37256f56d025"
+            ],
+            "index": "pypi",
+            "version": "==0.4.1"
         },
         "kiwisolver": {
             "hashes": [

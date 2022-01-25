@@ -9,3 +9,4 @@ django-seed
 psycopg2-binary
 geopy
 elasticsearch
+jamo

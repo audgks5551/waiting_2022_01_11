@@ -2,6 +2,7 @@ from django.db.models import Case, When
 
 #
 from elasticsearch import Elasticsearch
+from jamo import h2j, j2hcj
 
 #
 from . import models
@@ -23,7 +24,7 @@ def elasticsearch_search(keyword, store_type_list, amenity_list, theme_list, tas
     result_list = []
     for hit in response['hits']['hits']:
         result_list.append(hit["_source"]["id"])
-    print(result_list)
+
     order = Case(*[When(id=id, then=pos)
                    for pos, id in enumerate(result_list)])
 
@@ -33,8 +34,26 @@ def elasticsearch_search(keyword, store_type_list, amenity_list, theme_list, tas
     return queryset
 
 
+def getJamo(keyword):
+
+    jamo_str = j2hcj(h2j(keyword))
+
+    return jamo_str
+
+
 def query(keyword, store_type_list,
           amenity_list, theme_list, taste_list):
+
+    jamo = getJamo(keyword)
+
+    if store_type_list == []:
+        store_type_list.append("기본")
+    if amenity_list == []:
+        amenity_list.append("기본")
+    if theme_list == []:
+        theme_list.append("기본")
+    if taste_list == []:
+        taste_list.append("기본")
 
     query = {
 
@@ -56,7 +75,7 @@ def query(keyword, store_type_list,
 
                 {
                     "terms": {"taste": taste_list}
-                },
+                }
 
             ],
 

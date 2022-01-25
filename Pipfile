@@ -17,6 +17,7 @@ psycopg2-binary = "*"
 geopy = "*"
 osmnx = "*"
 elasticsearch = "*"
+jamo = "*"
 
 [dev-packages]
 
