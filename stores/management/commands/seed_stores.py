@@ -28,7 +28,7 @@ class Command(BaseCommand):
         menus = stores_models.Menu.objects.all()
         print((lambda x: random.choice(all_users)))
 
-        for row in data[1:200]:
+        for row in data[1:1000]:
             stores_models.Store.objects.create(
                 name=row[0],
                 address=row[1],
@@ -48,6 +48,10 @@ class Command(BaseCommand):
                     store=store,
                     file=f"stores_photos_food/{random.randint(1, 31)}.jpg",
                 )
+
+            store.amenities.add("기본")
+            store.themes.add("기본")
+            store.tastes.add("기본")
             for a in amenities:
                 magic_number = random.randint(0, 15)
                 if magic_number % 2 == 0:

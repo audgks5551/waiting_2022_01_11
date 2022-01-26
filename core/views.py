@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from stores import models as stores_models
 from stores import forms as stores_forms
-
+from django.core.paginator import Paginator
 
 # def geocoding(address):
 #    geolocoder = Nominatim(user_agent='South Korea')
@@ -18,11 +18,18 @@ def home(request):
 
     current_user_id = request.user.id
 
-    store_list = stores_models.Store.objects.all()
+    
     storeType_len = stores_models.StoreType.objects.count()
     amenity_len = stores_models.Amenity.objects.count()
     theme_len = stores_models.Theme.objects.count()
     taste_len = stores_models.Taste.objects.count()
+
+    queryset = stores_models.Store.objects.all()
+    paginator = Paginator(queryset, 10, orphans=5)
+
+    page = request.GET.get("page", 1)
+
+    store_list = paginator.get_page(page)
 
     search_form = stores_forms.SearchForm()
 

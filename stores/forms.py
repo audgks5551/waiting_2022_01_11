@@ -63,9 +63,9 @@ class AddPhotoForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
 
-    store_type = forms.ModelMultipleChoiceField(
-        required=False, queryset=models.StoreType.objects.all(), widget=forms.CheckboxSelectMultiple,
-    )
+    #store_type = forms.ModelMultipleChoiceField(
+    #    required=False, queryset=models.StoreType.objects.all(), widget=forms.CheckboxSelectMultiple,
+    #)
     amenities = forms.ModelMultipleChoiceField(
         required=False,
         queryset=models.Amenity.objects.all(),
@@ -86,8 +86,8 @@ class SearchForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["store_type"].label = "음식"
-        self.fields["store_type"].label_suffix = ""
+        #self.fields["store_type"].label = "음식"
+        #self.fields["store_type"].label_suffix = ""
         self.fields["amenities"].label = "서비스"
         self.fields["amenities"].label_suffix = ""
         self.fields["themes"].label = "테마"

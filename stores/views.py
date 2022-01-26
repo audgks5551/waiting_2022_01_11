@@ -35,14 +35,14 @@ class SearchView(View):
 
             if form.is_valid():
 
-                store_types = form.cleaned_data.get("store_type")
-                amenities = form.cleaned_data.get("amenities")
-                themes = form.cleaned_data.get("themes")
-                tastes = form.cleaned_data.get("tastes")
+                #store_types = form.cleaned_data.get("store_type")
+                amenities = form.cleaned_data.get("amenities", "")
+                themes = form.cleaned_data.get("themes", "")
+                tastes = form.cleaned_data.get("tastes", "")
 
-                store_type_list = []
-                for store_type in store_types:
-                    store_type_list.append(store_type.name)
+                #store_type_list = []
+                #for store_type in store_types:
+                #    store_type_list.append(store_type.name)
                 amenity_list = []
                 for amenity in amenities:
                     amenity_list.append(amenity.name)
@@ -54,7 +54,7 @@ class SearchView(View):
                     taste_list.append(taste.name)
 
                 queryset = search.elasticsearch_search(
-                    keyword, store_type_list, amenity_list, theme_list, taste_list)
+                    keyword, amenity_list, theme_list, taste_list)
 
                 paginator = Paginator(queryset, 10, orphans=5)
 

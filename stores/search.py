@@ -9,10 +9,9 @@ from . import models
 from . import search
 
 
-def elasticsearch_search(keyword, store_type_list, amenity_list, theme_list, taste_list):
+def elasticsearch_search(keyword, amenity_list, theme_list, taste_list):
 
-    query = search.query(keyword, store_type_list,
-                         amenity_list, theme_list, taste_list)
+    query = search.query(keyword, amenity_list, theme_list, taste_list)
     elasticsearch = Elasticsearch(
         "http://127.0.0.1:9200", http_auth=('elastic', 'elasticpassword'),)
 
@@ -30,7 +29,7 @@ def elasticsearch_search(keyword, store_type_list, amenity_list, theme_list, tas
 
     queryset = models.Store.objects.filter(
         id__in=result_list).order_by(order)
-
+    
     return queryset
 
 
@@ -41,42 +40,38 @@ def getJamo(keyword):
     return jamo_str
 
 
-def query(keyword, store_type_list,
-          amenity_list, theme_list, taste_list):
+def query(keyword, amenity_list, theme_list, taste_list):
 
     jamo = getJamo(keyword)
+    
+    #if store_type_list == []:
+    #    store = {'terms': {'store_type': ['기본']}}
+    #else:
+    #    store = {'terms': {'store_type': store_type_list}}
 
-    if store_type_list == []:
-        store_type_list.append("기본")
     if amenity_list == []:
-        amenity_list.append("기본")
-    if theme_list == []:
-        theme_list.append("기본")
-    if taste_list == []:
-        taste_list.append("기본")
+        amenity = {'terms': {'amenity': ['기본']}}
+    else:
+        amenity = {'terms': {'amenity': amenity_list}}
 
+    if theme_list == []:
+        theme = {'terms': {'theme': ['기본']}}
+    else:
+        theme = {'terms': {'theme': theme_list}}
+
+    if taste_list == []:
+        taste = {'terms': {'taste': ['기본']}}
+    else:
+        taste = {'terms': {'taste': taste_list}}
+        
     query = {
 
         "bool": {
 
             "filter": [
-
-                {
-                    "terms": {"store_type": store_type_list}
-                },
-
-                {
-                    "terms": {"amenity": amenity_list}
-                },
-
-                {
-                    "terms": {"theme": theme_list}
-                },
-
-                {
-                    "terms": {"taste": taste_list}
-                }
-
+                amenity,
+                theme,
+                taste
             ],
 
             "should": [
