@@ -12,6 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         themes = [
+            "기본",
             "가성비",
             "가족끼리",
             "간단한",

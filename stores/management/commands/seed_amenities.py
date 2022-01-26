@@ -12,6 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         amenities = [
+            "기본",
             "단체석",
             "포장",
             "배달",

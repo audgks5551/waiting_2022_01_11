@@ -12,6 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         tastes = [
+            "기본",
             "개운한",
             "걸쭉한",
             "고소한",

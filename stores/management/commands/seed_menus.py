@@ -11,7 +11,7 @@ class Command(BaseCommand):
             "--number", help="")
 
     def handle(self, *args, **options):
-        menus = [
+        menus = [    
             "가츠동",
             "간장게장",
             "간장새우",
