@@ -597,6 +597,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.3rem;
 }
 
+.t--mt-\[1\.1rem\] {
+  margin-top: -1.1rem;
+}
+
 .t-mr-0 {
   margin-right: 0px;
 }
@@ -761,16 +765,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 9999px;
 }
 
+.t-rounded {
+  border-radius: 0.25rem;
+}
+
 .t-rounded-\[2rem\] {
   border-radius: 2rem;
 }
 
 .t-rounded-sm {
   border-radius: 0.125rem;
-}
-
-.t-rounded {
-  border-radius: 0.25rem;
 }
 
 .t-rounded-md {
@@ -781,6 +785,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 1px;
 }
 
+.t-border-0 {
+  border-width: 0px;
+}
+
 .t-border-2 {
   border-width: 2px;
 }
@@ -789,16 +797,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 0.001rem;
 }
 
-.t-border-0 {
-  border-width: 0px;
-}
-
 .t-border-\[0\.126rem\] {
   border-width: 0.126rem;
 }
 
 .t-border-t {
   border-top-width: 1px;
+}
+
+.t-border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.t-border-l-2 {
+  border-left-width: 2px;
+}
+
+.t-border-r-2 {
+  border-right-width: 2px;
 }
 
 .t-border-b {
@@ -1259,6 +1275,18 @@ label[for*="id_tastes_"] > input {
 label.active {
   background-color: #1c4b82;
   color: white;
+}
+
+.completion_sub {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: black;
+}
+
+em {
+  color: #dd6b4d;
+  font-style: normal;
 }
 
 .before\:t-absolute::before {

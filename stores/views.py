@@ -27,7 +27,12 @@ class SearchView(View):
 
         current_user_id = request.user.id
 
-        keyword = request.GET.get("keyword", "")
+        storeType_len = models.StoreType.objects.count()
+        amenity_len = models.Amenity.objects.count()
+        theme_len = models.Theme.objects.count()
+        taste_len = models.Taste.objects.count()
+
+        keyword = request.GET.get("keyword")
 
         if keyword:
 
@@ -41,7 +46,7 @@ class SearchView(View):
                 tastes = form.cleaned_data.get("tastes", "")
 
                 #store_type_list = []
-                #for store_type in store_types:
+                # for store_type in store_types:
                 #    store_type_list.append(store_type.name)
                 amenity_list = []
                 for amenity in amenities:
@@ -53,10 +58,10 @@ class SearchView(View):
                 for taste in tastes:
                     taste_list.append(taste.name)
 
-                queryset = search.elasticsearch_search(
+                queryset, em_list = search.elasticsearch_search(
                     keyword, amenity_list, theme_list, taste_list)
 
-                paginator = Paginator(queryset, 10, orphans=5)
+                paginator = Paginator(queryset, 30, orphans=5)
 
                 page = request.GET.get("page", 1)
 
@@ -64,13 +69,27 @@ class SearchView(View):
 
                 return render(
                     request, "stores/stores_list.html", {
-                        "form": form, "store_list": store_list, "current_user_id": current_user_id}
+                        "form": form,
+                        "store_list": store_list,
+                        "current_user_id": current_user_id,
+                        "storeType_len": storeType_len,
+                        "amenity_len": amenity_len,
+                        "theme_len": theme_len,
+                        "taste_len": taste_len
+                    }
                 )
 
         else:
             form = forms.SearchForm()
 
-        return render(request, "stores/stores_list.html", {"form": form, "current_user_id": current_user_id})
+        return render(request, "stores/stores_list.html", {
+            "form": form,
+            "current_user_id": current_user_id,
+            "storeType_len": storeType_len,
+            "amenity_len": amenity_len,
+            "theme_len": theme_len,
+            "taste_len": taste_len
+        })
 
 
 def listStore(request):
