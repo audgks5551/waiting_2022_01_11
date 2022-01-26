@@ -13,7 +13,7 @@ def elasticsearch_search(keyword, amenity_list, theme_list, taste_list):
 
     query = search.query(keyword, amenity_list, theme_list, taste_list)
     elasticsearch = Elasticsearch(
-        "http://127.17.0.1:9200", http_auth=('elastic', 'elasticpassword'),)
+        "http://101.101.216.187:9200", http_auth=('elastic', 'elasticpassword'),)
 
     response = elasticsearch.search(
         index="waiting_2022_01_11__stores_store__v1",
@@ -29,7 +29,7 @@ def elasticsearch_search(keyword, amenity_list, theme_list, taste_list):
 
     queryset = models.Store.objects.filter(
         id__in=result_list).order_by(order)
-    
+
     return queryset
 
 
@@ -43,10 +43,10 @@ def getJamo(keyword):
 def query(keyword, amenity_list, theme_list, taste_list):
 
     jamo = getJamo(keyword)
-    
-    #if store_type_list == []:
+
+    # if store_type_list == []:
     #    store = {'terms': {'store_type': ['기본']}}
-    #else:
+    # else:
     #    store = {'terms': {'store_type': store_type_list}}
 
     if amenity_list == []:
@@ -63,7 +63,7 @@ def query(keyword, amenity_list, theme_list, taste_list):
         taste = {"terms": {"taste": ["기본"]}}
     else:
         taste = {"terms": {"taste": taste_list}}
-        
+
     query = {
 
         "bool": {
