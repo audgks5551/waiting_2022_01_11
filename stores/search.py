@@ -50,19 +50,19 @@ def query(keyword, amenity_list, theme_list, taste_list):
     #    store = {'terms': {'store_type': store_type_list}}
 
     if amenity_list == []:
-        amenity = {'terms': {'amenity': ['기본']}}
+        amenity = {"terms": {"amenity": ["기본"]}}
     else:
-        amenity = {'terms': {'amenity': amenity_list}}
+        amenity = {"terms": {"amenity": amenity_list}}
 
     if theme_list == []:
-        theme = {'terms': {'theme': ['기본']}}
+        theme = {"terms": {"theme": ["기본"]}}
     else:
         theme = {'terms': {'theme': theme_list}}
 
     if taste_list == []:
-        taste = {'terms': {'taste': ['기본']}}
+        taste = {"terms": {"taste": ["기본"]}}
     else:
-        taste = {'terms': {'taste': taste_list}}
+        taste = {"terms": {"taste": taste_list}}
         
     query = {
 
