@@ -134,6 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = BASE_DIR / 'static'
 
 # 미디어 파일 경로 설정
 MEDIA_URL = "/media/"
