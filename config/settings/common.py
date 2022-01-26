@@ -161,4 +161,4 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 LOGIN_URL = '/users/login'
 LOGIN_REDIRECT_URL = '/'
 
-CSRF_TRUSTED_ORIGINS = ['https://wait.public.itseasy.site/']
+CSRF_TRUSTED_ORIGINS = ['https://wait.public.itseasy.site']
