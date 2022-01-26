@@ -13,7 +13,7 @@ def elasticsearch_search(keyword, amenity_list, theme_list, taste_list):
 
     query = search.query(keyword, amenity_list, theme_list, taste_list)
     elasticsearch = Elasticsearch(
-        "http://127.0.0.1:9200", http_auth=('elastic', 'elasticpassword'),)
+        "http://127.17.0.1:9200", http_auth=('elastic', 'elasticpassword'),)
 
     response = elasticsearch.search(
         index="waiting_2022_01_11__stores_store__v1",
