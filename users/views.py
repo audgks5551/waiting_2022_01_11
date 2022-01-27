@@ -79,7 +79,7 @@ def complete_verification(request, key):
 def github_login(request: HttpRequest):
 
     client_id = os.environ.get("GIT_ID")
-    redirect_uri = "http://wait.public.itseasy.site/users/login/github/callback/"
+    redirect_uri = "https://wait.public.itseasy.site/users/login/github/callback/"
     scope = "read:user"
 
     return redirect(f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}")
@@ -92,7 +92,7 @@ def github_collback(request: HttpRequest):
         client_id = os.environ.get("GIT_ID")
         client_secret = os.environ.get("GIT_SECRET")
         code = request.GET.get("code", None)
-        redirect_uri = "http://wait.public.itseasy.site/users/login/github/callback/"
+        redirect_uri = "https://wait.public.itseasy.site/users/login/github/callback/"
         if code is not None:
             token_request = requests.post(
                 f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}&redirect_uri={redirect_uri}",
@@ -147,7 +147,7 @@ def github_collback(request: HttpRequest):
 # 카카오톡
 def kakao_login(request: HttpRequest):
     client_id = os.environ.get("KAKAO_ID")
-    redirect_uri = "http://wait.public.itseasy.site/users/login/kakao/callback/"
+    redirect_uri = "https://wait.public.itseasy.site/users/login/kakao/callback/"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
     )
@@ -159,7 +159,7 @@ def kakao_collback(request: HttpRequest):
     try:
         code = request.GET.get("code")
         client_id = os.environ.get("KAKAO_ID")
-        redirect_uri = "http://wait.public.itseasy.site/users/login/kakao/callback/"
+        redirect_uri = "https://wait.public.itseasy.site/users/login/kakao/callback/"
         token_request = requests.post(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
         )
