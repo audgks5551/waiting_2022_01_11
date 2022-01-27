@@ -12,4 +12,3 @@ elasticsearch
 jamo
 gunicorn
 django-debug-toolbar
-dotenv
