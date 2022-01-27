@@ -585,8 +585,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 2rem;
 }
 
-.t-mb-3 {
-  margin-bottom: 0.75rem;
+.t--mt-\[1rem\] {
+  margin-top: -1rem;
 }
 
 .t-mb-0 {
@@ -599,6 +599,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t--mt-\[1\.1rem\] {
   margin-top: -1.1rem;
+}
+
+.t-mr-\[3\.35rem\] {
+  margin-right: 3.35rem;
 }
 
 .t-mr-0 {
@@ -615,10 +619,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mb-\[1\.5rem\] {
   margin-bottom: 1.5rem;
-}
-
-.t--mt-\[1rem\] {
-  margin-top: -1rem;
 }
 
 .t-mb-\[0\.5rem\] {
@@ -1006,6 +1006,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 1rem;
 }
 
+.t-pl-\[1rem\] {
+  padding-left: 1rem;
+}
+
 .t-pr-\[1rem\] {
   padding-right: 1rem;
 }
@@ -1035,16 +1039,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
+.t-text-\[1\.3rem\] {
+  font-size: 1.3rem;
+}
+
 .t-text-\[2rem\] {
   font-size: 2rem;
 }
 
 .t-text-\[1rem\] {
   font-size: 1rem;
-}
-
-.t-text-\[1\.3rem\] {
-  font-size: 1.3rem;
 }
 
 .t-font-medium {
@@ -1217,13 +1221,12 @@ select {
   font-weight: 500;
   border-radius: 0.125rem;
   padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-bottom: 2rem;
   border-width: 1px;
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   line-height: 1.75rem;
-  margin-bottom: 0.5rem;
 }
 
 #id_store_type,
@@ -1284,9 +1287,17 @@ label.active {
   color: black;
 }
 
+#completion.active {
+  display: flex;
+}
+
 em {
   color: #dd6b4d;
   font-style: normal;
+}
+
+input:focus {
+  outline:none;
 }
 
 .before\:t-absolute::before {
@@ -1385,6 +1396,16 @@ em {
   content: var(--tw-content);
 }
 
+.hover\:t-border-\[\#1C4B82\]:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(28 75 130 / var(--tw-border-opacity));
+}
+
+.hover\:t-bg-\[\#1C4B82\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 75 130 / var(--tw-bg-opacity));
+}
+
 .hover\:t-bg-\[\#DD6B4D\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(221 107 77 / var(--tw-bg-opacity));
@@ -1408,11 +1429,6 @@ em {
 .hover\:t-bg-gray-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-}
-
-.hover\:t-bg-\[\#1C4B82\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(28 75 130 / var(--tw-bg-opacity));
 }
 
 .hover\:t-text-black:hover {

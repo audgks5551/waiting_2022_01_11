@@ -1,8 +1,9 @@
-<div class="w-full t-mb-3 {% if field.errors %} t-border t-border-red-500 t--pb-[1rem] {% endif %}">
+
+{% if field.errors %}
+    {% for error in field.errors %}
+        <span class="t-text-red-500 t-font-medium t-text-sm t--mt-[1rem]">{{error}}</span> 
+    {% endfor %}
+{% endif %}
+<div class="w-full t-mb-[1rem]{% if field.errors %} t-border t-border-red-500 input{% endif %}">
     {{ field }}
 </div>
-    {% if field.errors %}
-        {% for error in field.errors %}
-            <span class="t-text-red-500 t-font-medium t-text-sm">{{error}}</span> 
-        {% endfor %}
-    {% endif %}
