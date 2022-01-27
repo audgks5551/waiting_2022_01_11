@@ -12,6 +12,7 @@ from django.contrib import messages
 #
 from . import forms, models, mixins 
 from stores import models as stores_models
+from stores import forms as sotres_forms
 import requests
 
 class LoginView(mixins.LoggedOutOnlyView, FormView):
@@ -213,8 +214,10 @@ def showMyPage(request):
     """ Show My Page """
 
     current_user_id = request.user.id
+
+    search_form = sotres_forms.SearchForm()
     
-    context = {"current_user_id": current_user_id}
+    context = {"current_user_id": current_user_id, "search_form": search_form}
     return render(request, "users/users_mypage.html", context)
 
 @login_required
@@ -224,8 +227,11 @@ def myStoreList(request):
 
     myStore_list = stores_models.Store.objects.filter(user_id=current_user_id)
 
+    search_form = sotres_forms.SearchForm()
+
     context = {
         "current_user_id": current_user_id,
         "myStore_list": myStore_list,
+        "search_form": search_form
     }
     return render(request, "users/users_store_list.html", context)

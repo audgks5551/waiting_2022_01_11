@@ -69,7 +69,7 @@ class SearchView(View):
 
                 return render(
                     request, "stores/stores_list.html", {
-                        "form": form,
+                        "search_form": form,
                         "store_list": store_list,
                         "current_user_id": current_user_id,
                         "storeType_len": storeType_len,
@@ -80,10 +80,10 @@ class SearchView(View):
                 )
 
         else:
-            form = forms.SearchForm()
+            search_form = forms.SearchForm()
 
         return render(request, "stores/stores_list.html", {
-            "form": form,
+            "search_form": search_form,
             "current_user_id": current_user_id,
             "storeType_len": storeType_len,
             "amenity_len": amenity_len,
@@ -111,11 +111,15 @@ def detailStore(request, store_id):
     store = models.Store.objects.get(id=store_id)
     waiting_mode = waiting_models.StartWaiting.objects.get(
         store_id=store_id).mode
+
+    search_form = forms.SearchForm()
+
     context = {
         "store": store,
         "current_user_id": current_user_id,
         "store_id": store_id,
-        "waiting_mode": waiting_mode
+        "waiting_mode": waiting_mode,
+        "search_form": search_form
     }
 
     return render(request, "stores/stores_detail.html", context)
@@ -167,6 +171,7 @@ def modifyStore(request, store_id):
         store_form = forms.CreateStoreForm()
         startWaiting_form = waiting_forms.StartWaitingForm()
         add_photo_form = forms.AddPhotoForm()
+        search_form = forms.SearchForm()
 
     store_form = forms.CreateStoreForm(instance=store)
     startWaiting_form = waiting_forms.StartWaitingForm(instance=startWaiting)
@@ -176,6 +181,7 @@ def modifyStore(request, store_id):
         "store_form": store_form,
         "startWaiting_form": startWaiting_form,
         "add_photo_form": add_photo_form,
+        "search_form": search_form,
         "photo_list": photo_list,
         "store": store,
     }
@@ -227,6 +233,7 @@ def createStore(request):
         store_form = forms.CreateStoreForm()
         startWaiting_form = waiting_forms.StartWaitingForm()
         add_photo_form = forms.AddPhotoForm()
+        search_form = forms.SearchForm()
 
     storeType_len = models.StoreType.objects.count()
     amenity_len = models.Amenity.objects.count()
@@ -238,6 +245,7 @@ def createStore(request):
         "current_user_id": current_user_id,
         "add_photo_form": add_photo_form,
         "startWaiting_form": startWaiting_form,
+        "search_form": search_form,
         "storeType_len": storeType_len,
         "amenity_len": amenity_len,
         "theme_len": theme_len,

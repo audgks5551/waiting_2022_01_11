@@ -1002,6 +1002,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1.7rem;
 }
 
+.t-py-\[1\.5rem\] {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .t-pb-\[1rem\] {
   padding-bottom: 1rem;
 }
@@ -1221,7 +1226,7 @@ select {
   font-weight: 500;
   border-radius: 0.125rem;
   padding-top: 1.25rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1.25rem;
   border-width: 1px;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1406,11 +1411,6 @@ input:focus {
   background-color: rgb(28 75 130 / var(--tw-bg-opacity));
 }
 
-.hover\:t-bg-\[\#DD6B4D\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(221 107 77 / var(--tw-bg-opacity));
-}
-
 .hover\:t-bg-gray-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
@@ -1515,6 +1515,10 @@ input:focus {
 
   .lg\:t-mt-0 {
     margin-top: 0px;
+  }
+
+  .lg\:t-mr-\[51\%\] {
+    margin-right: 51%;
   }
 
   .lg\:t-flex {

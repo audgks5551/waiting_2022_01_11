@@ -19,8 +19,7 @@
     </button>
     <div class="collapse navbar-collapse lg:t-flex lg:t-justify-end lg:t-ml-[1rem] t-mt-[1rem] lg:t-mt-0" id="navbarsExample09">
       <form class="d-flex lg:t-w-[20rem]" action="{% url "stores:search" %}" type="GET">
-        <input class="form-control me-2 t-border-0" type="search" placeholder="먹고 싶은 음식을 적어주세요!" aria-label="Search">
-          <button class="btn t-whitespace-nowrap t-border-2 t-border-white t-text-white hover:t-bg-[#DD6B4D]" type="submit">검색</button>
+        <input id="searchKeyword" class="form-control me-2 t-border-0" type="search" placeholder="먹고 싶은 음식을 적어주세요!" aria-label="Search" data-bs-toggle="modal" data-bs-target="#nav-b">
       </form>
     </div>
 

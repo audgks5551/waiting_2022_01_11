@@ -26,20 +26,21 @@ list
     </script>
     
     <div class="t-container t-mx-auto">
-        <div class="t-ml-[1rem] t-mb-[0.5rem]">
-            <h2 class="t-text-[1.2rem]">검색한 맛집</h2>
-        </div>
-        <div class="t-border-b t-p-[1rem]">
+        
+        <div class="t-p-[1rem]">
             <form method="GET">
-                <div class="t-flex">
-                    <input class="t-mb-0 t-h-[3rem] t-border-2 t-border-[#1C4B82]" type="text" placeholder="지역, 맛, 음식" />
+                <div class="t-flex lg:t-mr-[51%]">
+                    <input class="t-mb-0 t-h-[3rem] t-border-2 t-border-[#1C4B82] t-p-0 t-py-[1.5rem] t-pl-[1rem]" type="text" placeholder="지역, 맛, 음식" data-bs-toggle="modal" data-bs-target="#nav-b"/>
                     <button class="t-whitespace-nowrap btn btn-light t-ml-[0.3rem] t-border-2 t-border-[#1C4B82]">
                         <img class="t-w-[1.5rem]" src="/media/nav-b/search.svg" />
                     </button>
                 </div>
             </form>
         </div>
-        
+
+        <div class="t-ml-[1rem] t-mb-[0.5rem]">
+            <h2 class="t-text-[1.2rem]">검색한 맛집</h2>
+        </div>
         <ul class="t-grid t-grid-cols-2 md:t-grid-cols-3 lg:t-grid-cols-4 t-gap-[0.7rem] lg:t-gap-[2rem] lg:t-px-[0.5rem]">
             {% for store in store_list %}
                 {% include "stores/stores_card.html" with store=store %}
@@ -52,5 +53,5 @@ list
 
 {% block nav-b %}
     
-    {% include "partials/nav-b.html" with home="home" person="person" %}
+    {% include "partials/nav-b.html" with home=True person=True %}
 {% endblock nav-b %}
