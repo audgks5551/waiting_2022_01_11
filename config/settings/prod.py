@@ -2,7 +2,7 @@ from .common import *
 
 DEBUG = False
 
-
+STATIC_ROOT = BASE_DIR / 'static'
 
 DATABASES = {
     'default': {
