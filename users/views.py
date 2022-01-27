@@ -23,11 +23,13 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
     success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
+        first_name = form.cleaned_data.get("first_name")
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
+        messages.info(self.request, f"{first_name}님 환영합니다")
         return redirect(self.get_success_url())
 
 
@@ -50,12 +52,14 @@ class SignUpView(mixins.LoggedOutOnlyView, FormView):
 
     def form_valid(self, form):
         form.save()
+        first_name = form.cleaned_data.get("first_name")
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
-        user.verify_email()
+        #user.verify_email()
+        messages.info(self.request, f"{first_name}님 환영합니다")
         return redirect(self.get_success_url())
 
 def complete_verification(request, key):
