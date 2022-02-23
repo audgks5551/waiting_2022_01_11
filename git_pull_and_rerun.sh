@@ -35,3 +35,5 @@ docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; nohup gun
 docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; echo yes | python manage.py collectstatic --settings=base.settings.prod"
 
 exit 0
+
+## 테스트1
