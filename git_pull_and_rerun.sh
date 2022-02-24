@@ -23,7 +23,7 @@ docker exec python__2 pkill "gunicorn"
 docker exec python__2 bash -ce "cd /data/site_projects/python__2/src/ ; git pull origin master"
 
 # 의존성 설치
-docker exec python__2 bash -ce "cd /data/site_projects/python__2/src/ ; pip install -r requirements/prod.txt"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src/ ; pip install -r requirements.txt"
 
 # 마이그레이트
 docker exec python__2 bash -ce "cd /data/site_projects/python__2/src/ ; python manage.py migrate --settings=config.settings.prod"
