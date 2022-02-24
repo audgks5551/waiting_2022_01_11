@@ -2,16 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 칠백삼체 유서연 */
+/* 주아체 */
 @font-face {
-  font-family: "establishRoomNo703OTF";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRoomNo703OTF.woff")
-    format("woff");
+  font-family: 'BMJUA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+}
+
+/* 을지로10년후체 */
+@font-face {
+  font-family: 'BMEuljiro10yearslater';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/BMEuljiro10yearslater.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html > body {
-  font-family: "establishRoomNo703OTF";
+  font-family: "BMJUA";
   text-underline-position: under;
+}
+
+.title {
+  font-family: 'BMEuljiro10yearslater';
 }
 
 @keyframes messageFadeInMedium {
