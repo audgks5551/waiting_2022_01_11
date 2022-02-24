@@ -13,7 +13,7 @@
   exit 1
 }
 
-# 기존장고 종료
+# 테스트장고 종료
 docker stop python__2__test
 
 # 기존장고 종료
