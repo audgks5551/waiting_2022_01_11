@@ -23,10 +23,22 @@ docker exec python__2 pkill "gunicorn"
 docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; git pull origin master"
 
 # 의존성 설치
-docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; pip install -r requirements.txt"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; pip install -r requirements/prod.txt"
 
 # 마이그레이트
 docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py migrate --settings=config.settings.prod"
+
+# 샘플 데이터 추가
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py createsu --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_users --number 10 --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_amenities --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_foodTypes --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_menus --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_storeTypes --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_tastes --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_themes --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_stores 'example_csv.csv' --settings=config.settings.prod"
+docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; python manage.py seed_waiting --settings=config.settings.prod"
 
 # 장고를 운영모드로 실행
 docker exec python__2 bash -ce "cd /data/site_projects/python__2/src ; nohup gunicorn --bind=0.0.0.0:8000 config.wsgi &"

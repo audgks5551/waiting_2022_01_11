@@ -28,7 +28,7 @@ class Command(BaseCommand):
         menus = stores_models.Menu.objects.all()
         print((lambda x: random.choice(all_users)))
 
-        for row in data[1:100]:
+        for row in data[1:50]:
             stores_models.Store.objects.create(
                 name=row[0],
                 address=row[1],
