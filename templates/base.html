@@ -21,11 +21,11 @@
 
         <title>기달 | {% block page_title %}{% endblock page_title %}</title>
     </head>
-    <body class="t-bg-white">
+    <body class="t-bg-white t-flex t-flex-col t-min-h-screen">
         {% include "partials/messages.html" %}
         {% include "partials/nav.html" %}
 
-        <div class="t-mt-[5rem]">
+        <div class="t-mt-[5rem] t-flex-1">
             {% block content %}
             {% endblock content %}
         </div>
